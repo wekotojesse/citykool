@@ -1,0 +1,1446 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo tab.jpg">
+    <title> Home - City Kool Integrated Solutions</title>
+    <!-- FontAwesome for Dark Mode Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
+        :root {
+            --primary: #0A192F;
+            --primary-color: #008DDA;
+            --secondary: #1E3A8A;
+            --secondary-color: #1e3e62;
+            --accent: #19258d;
+            --accent-color: #0284C7;
+            --text-main: #334155;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+            --text-light: #64748B;
+            --bg-subtle: #F8FAFC;
+            --bg-light: #F8FAFC;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --header-bg: #FFFFFF;
+            --footer-bg: #0A192F;
+            --card-bg: #FFFFFF;
+        }
+
+        [data-theme="dark"] {
+            --primary: #0A192F;
+            --primary-color: #071120;
+            --secondary: #1E3A8A;
+            --accent-color: #0284C7;
+            --text-main: #94A3B8;
+            --text-dark: #F1F5F9;
+            --text-muted: #94A3B8;
+            --text-light: #94A3B8;
+            --bg-subtle: #090D16;
+            --bg-light: #0B132B;
+            --white: #111C31;
+            --border-color: #1E293B;
+            --header-bg: #0B132B;
+            --footer-bg: #070B14;
+            --card-bg: #05296c;
+        }
+
+        /* Headings and Text Colors to White in Dark Mode */
+        [data-theme="dark"] h1,
+        [data-theme="dark"] h2,
+        [data-theme="dark"] h3,
+        [data-theme="dark"] h4,
+        [data-theme="dark"] h5,
+        [data-theme="dark"] h6,
+        [data-theme="dark"] p,
+        [data-theme="dark"] span,
+        [data-theme="dark"] a:not(.btn-quote):not(.btn-primary):not(.btn-outline):not(.modal-btn-primary),
+        [data-theme="dark"] .overview-text h2,
+        [data-theme="dark"] .section-header h2,
+        [data-theme="dark"] .section-header p,
+        [data-theme="dark"] .highlight-card h3,
+        [data-theme="dark"] .highlight-card p,
+        [data-theme="dark"] .sector-content h3,
+        [data-theme="dark"] .sector-content p,
+        [data-theme="dark"] .why-box h3,
+        [data-theme="dark"] .why-box p,
+        [data-theme="dark"] .mid-contact-info h2,
+        [data-theme="dark"] .mid-contact-info p,
+        [data-theme="dark"] .contact-detail-text h4,
+        [data-theme="dark"] .contact-detail-text a,
+        [data-theme="dark"] .contact-detail-text span,
+        [data-theme="dark"] nav ul li a {
+            color: #FFFFFF !important;
+        }
+
+        [data-theme="dark"] header,
+        [data-theme="dark"] .nav-right-group,
+        [data-theme="dark"] nav ul li.dropdown .dropdown-menu,
+        [data-theme="dark"] .highlight-card,
+        [data-theme="dark"] .sector-card,
+        [data-theme="dark"] .why-box,
+        [data-theme="dark"] .modal-box,
+        [data-theme="dark"] .client-logo-card,
+        [data-theme="dark"] .mid-contact-card {
+            background-color: var(--white);
+            border-color: var(--border-color);
+        }
+
+        [data-theme="dark"] .sectors-container {
+            background: #070e17;
+        }
+
+        [data-theme="dark"] .clients-section {
+            background: var(--white);
+            border-color: var(--border-color);
+        }
+
+        /* Make Burger Menu Lines adapt in Dark Mode */
+        [data-theme="dark"] .burger-menu span {
+            background-color: var(--text-dark) !important;
+        }
+        
+        body {
+            background-color: var(--bg-subtle);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation Styles */
+        header { 
+            background: var(--header-bg); 
+            box-shadow: 0 4px 20px rgba(2,40,89,0.06); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+
+        nav { 
+            max-width: 1250px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 1rem 2rem; 
+            position: relative; 
+        }
+        
+        nav a.logo { 
+            display: flex; 
+            align-items: center; 
+            text-decoration: none; 
+        }
+
+        nav a.logo img { 
+            height: 80px; 
+            width: auto; 
+            object-fit: contain; 
+            display: block; 
+        }
+
+        .nav-right-group {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 2rem; 
+            align-items: center; 
+        }
+
+        nav ul li a { 
+            text-decoration: none; 
+            color: var(--text-dark); 
+            font-weight: 500; 
+            font-size: 0.95rem; 
+            transition: color 0.3s; 
+        }
+
+        nav ul li a:hover, nav ul li a.active { 
+            color: var(--secondary-color); 
+        }
+        
+        .btn-quote { 
+            background: linear-gradient(150deg, var(--secondary-color), var(--accent-color)); 
+            color: #FFFFFF !important; 
+            padding: 0.65rem 1.4rem; 
+            border-radius: 6px; 
+            text-decoration: none; 
+            font-size: 0.9rem; 
+            font-weight: 600; 
+            box-shadow: 0 4px 12px rgba(0,119,182,0.2); 
+            transition: transform 0.2s, box-shadow 0.2s; 
+            white-space: nowrap;
+        }
+
+        .btn-quote:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 16px rgba(0,119,182,0.3); 
+        }
+
+        .theme-toggle-btn {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Dropdown Styling */
+        nav ul li.dropdown {
+            position: relative;
+        }
+
+        nav ul li.dropdown .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            box-shadow: 0 10px 25px rgba(2,40,89,0.1);
+            border-radius: 8px;
+            padding: 0.75rem 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1200;
+            border: 1px solid var(--border-color);
+        }
+
+        nav ul li.dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        nav ul li.dropdown .dropdown-menu li {
+            width: 100%;
+        }
+
+        nav ul li.dropdown .dropdown-menu li a {
+            padding: 0.6rem 1.2rem;
+            display: block;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav ul li.dropdown .dropdown-menu li a:hover {
+            background: var(--bg-subtle);
+            color: var(--secondary-color);
+            transform: none;
+        }
+
+        /* Mobile Adjustments for Dropdown */
+        @media (max-width: 850px) {
+            nav ul li.dropdown .dropdown-menu {
+                position: static !important;
+                box-shadow: none !important;
+                border: none !important;
+                background: transparent !important;
+                padding-left: 1rem !important;
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+            }
+            nav ul li.dropdown .dropdown-menu li a {
+                padding: 0.4rem 0;
+                font-size: 0.85rem;
+                color: var(--text-muted);
+            }
+        }
+
+        /* Burger Menu Toggle Button & X Animation */
+        .burger-menu {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            position: relative;
+            width: 25px;
+            height: 21px;
+        }
+
+        .burger-menu span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: all 0.3s;
+            position: absolute;
+            left: 0;
+        }
+
+        .burger-menu span:nth-child(1) {
+            top: 0;
+        }
+
+        .burger-menu span:nth-child(2) {
+            top: 9px;
+        }
+
+        .burger-menu span:nth-child(3) {
+            top: 18px;
+        }
+
+        /* X animation when burger is active */
+        .burger-menu.active span:nth-child(1) {
+            top: 9px;
+            transform: rotate(45deg);
+        }
+
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active span:nth-child(3) {
+            top: 9px;
+            transform: rotate(-45deg);
+        }
+
+        /* Theme toggle responsive positioning */
+        .nav-controls {
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .theme-toggle-mobile {
+            display: none;
+        }
+
+        /* Home link only inside burger menu on mobile */
+        .home-li {
+            display: none;
+        }
+        @media (max-width: 850px) {
+            .home-li {
+                display: list-item;
+            }
+        }
+
+        /* Hero Carousel Section */
+        .hero-carousel {
+            position: relative;
+            height: 85vh;
+            min-height: 600px;
+            overflow: hidden;
+            background: #0b192c;
+        }
+        .carousel-slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .carousel-slide.active { opacity: 1; z-index: 2; }
+        .carousel-slide::after {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(11,25,44,0.75), rgba(11,25,44,0.92));
+            z-index: 1;
+        }
+        .carousel-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            padding: 0 2rem;
+            color: var(--white);
+        }
+        .carousel-badge {
+            display: inline-block;
+            background: rgba(0, 141, 218, 0.2);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+        }
+        .carousel-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem; letter-spacing: -1px; }
+        .carousel-content p { font-size: 1.2rem; line-height: 1.6; color: #cbd5e1; max-width: 700px; margin: 0 auto 2.5rem; }
+        
+        .hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+        .btn-primary { background: var(--accent-color); color: var(--white); padding: 0.85rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(0,141,218,0.3); transition: all 0.3s; }
+        .btn-primary:hover { background: #0070aa; transform: translateY(-2px); }
+        .btn-outline { background: rgba(255,255,255,0.05); border: 2px solid rgba(255,255,255,0.8); color: var(--white); padding: 0.85rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; backdrop-filter: blur(5px); transition: all 0.3s; }
+        .btn-outline:hover { background: var(--white); color: var(--primary-color); border-color: var(--white); }
+
+        /* Carousel Navigation Controls */
+        .carousel-nav {
+            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 10px; z-index: 10;
+        }
+        .carousel-dot {
+            width: 12px; height: 12px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.6);
+            background: transparent; cursor: pointer; transition: all 0.3s;
+        }
+        .carousel-dot.active { background: var(--accent-color); border-color: var(--accent-color); width: 32px; border-radius: 6px; }
+
+        /* Highlights Bar */
+        .highlights-bar {
+            max-width: 1200px;
+            margin: -3.5rem auto 5rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        .highlight-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 12px 35px rgba(11,25,44,0.06);
+            border-top: 4px solid var(--accent-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .highlight-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(11,25,44,0.1); }
+        .highlight-card h3 { color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.3rem; font-weight: 700; }
+        .highlight-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
+
+        /* Overview Section */
+        .overview-section {
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .overview-text span { font-size: 0.85rem; font-weight: 700; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1.5px; }
+        .overview-text h2 { font-size: 2.5rem; color: var(--primary-color); margin: 0.5rem 0 1.2rem; line-height: 1.2; font-weight: 800; }
+        .overview-text p { color: var(--text-light); line-height: 1.7; margin-bottom: 1.5rem; font-size: 1rem; }
+        
+        .overview-img-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(11,25,44,0.12);
+            height: 420px;
+            cursor: pointer;
+        }
+        .overview-slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .overview-slide.active { opacity: 1; z-index: 2; }
+        .overview-slide img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+        }
+        .overview-dots {
+            position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 8px; z-index: 10;
+        }
+        .overview-dot {
+            width: 10px; height: 10px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.8);
+            background: transparent; cursor: pointer; transition: all 0.3s;
+        }
+        .overview-dot.active { background: var(--accent-color); border-color: var(--accent-color); width: 24px; border-radius: 5px; }
+
+        /* Stats Counter Band */
+        .stats-band {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 4.5rem 2rem;
+            margin-bottom: 6rem;
+        }
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+        .stat-item h3 { font-size: 3rem; color: var(--accent-color); margin-bottom: 0.4rem; font-weight: 800; }
+        .stat-item p { font-size: 0.95rem; color: #cbd5e1; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+
+        /* Middle Direct Contact / Support Section */
+        .mid-contact-section {
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+            padding: 0 2rem;
+        }
+        .mid-contact-card {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(11,25,44,0.06);
+            padding: 3.5rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            border: 1px solid #e2e8f0;
+        }
+        .mid-contact-info span { font-size: 0.85rem; font-weight: 700; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1.5px; }
+        .mid-contact-info h2 { font-size: 2.2rem; color: var(--primary-color); margin: 0.5rem 0 1rem; font-weight: 800; line-height: 1.2; }
+        .mid-contact-info p { color: var(--text-light); font-size: 1rem; line-height: 1.6; margin-bottom: 2rem; }
+        
+        .contact-details-grid { display: flex; flex-direction: column; gap: 1.2rem; }
+        .contact-detail-row { display: flex; align-items: center; gap: 1rem; }
+        .contact-icon-box {
+            width: 45px; height: 45px;
+            background: rgba(0,141,218,0.1);
+            color: var(--accent-color);
+            border-radius: 10px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.2rem; font-weight: 700;
+        }
+        .contact-detail-text h4 { font-size: 0.9rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; }
+        .contact-detail-text a, .contact-detail-text span { font-size: 1.05rem; font-weight: 700; color: var(--primary-color); text-decoration: none; transition: color 0.2s; }
+        .contact-detail-text a:hover { color: var(--accent-color); }
+
+        .mid-contact-action-box {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            padding: 2.5rem;
+            color: var(--white);
+            text-align: center;
+        }
+        .mid-contact-action-box h3 { font-size: 1.5rem; margin-bottom: 0.75rem; font-weight: 700; }
+        .mid-contact-action-box p { color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.8rem; }
+        .btn-mid-contact {
+            background: var(--accent-color); color: var(--white); font-weight: 700; padding: 0.85rem 2rem; border-radius: 6px; text-decoration: none; display: inline-block; box-shadow: 0 4px 15px rgba(0,141,218,0.3); transition: transform 0.2s, background 0.2s;
+        }
+        .btn-mid-contact:hover { background: #0070aa; transform: translateY(-2px); }
+
+        /* Primary Sectors Section */
+        .sectors-container { background: #eef2f6; padding: 6rem 2rem; margin-bottom: 6rem; transition: background 0.3s; }
+        .sectors-inner { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 0.75rem; font-weight: 800; }
+        .section-header p { color: var(--text-light); max-width: 650px; margin: 0 auto; font-size: 1.05rem; line-height: 1.6; }
+
+        .sectors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; }
+        .sector-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.04); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+        .sector-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(11,25,44,0.08); }
+        .sector-card img { width: 100%; height: 230px; object-fit: cover; transition: transform 0.5s ease; }
+        .sector-card:hover img { transform: scale(1.05); }
+        .sector-content { padding: 2.2rem; }
+        .sector-content h3 { color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.35rem; font-weight: 700; }
+        .sector-content p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
+        
+        .sector-btn {
+            background: none; border: none; color: var(--accent-color); font-weight: 700; font-size: 0.95rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0; transition: color 0.2s, transform 0.2s;
+        }
+        .sector-btn:hover { color: #0070aa; transform: translateX(3px); }
+
+        /* Why Choose Us Section */
+        .why-container { max-width: 1200px; margin: 0 auto 6rem; padding: 0 2rem; }
+        .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+        .why-box {
+            background: var(--white); padding: 2.5rem; border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04); border-left: 4px solid var(--accent-color); transition: transform 0.3s; cursor: pointer;
+        }
+        .why-box:hover { transform: translateY(-5px); }
+        .why-box h3 { color: var(--primary-color); font-size: 1.35rem; margin-bottom: 0.75rem; font-weight: 700; }
+        .why-box p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
+
+        /* Trusted Clients / Testimonial Logo Carousel Section */
+        .clients-section {
+            background: var(--white);
+            padding: 5rem 0;
+            margin-bottom: 0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+        .clients-section .section-header {
+            margin-bottom: 3rem;
+        }
+        .logo-carousel-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+        }
+        .logo-carousel-wrapper::before,
+        .logo-carousel-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 0; width: 120px; height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .logo-carousel-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--white), rgba(255, 255, 255, 0));
+        }
+        .logo-carousel-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--white), rgba(255, 255, 255, 0));
+        }
+        .logo-track {
+            display: flex;
+            gap: 3.5rem;
+            align-items: center;
+            animation: scrollLogos 32s linear infinite;
+            width: max-content;
+        }
+        .logo-track:hover {
+            animation-play-state: paused;
+        }
+        .client-logo-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.2rem 2.2rem;
+            min-width: 210px;
+            height: 95px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            cursor: pointer;
+        }
+        [data-theme="dark"] .client-logo-card {
+            background: #162232;
+            border-color: var(--border-color);
+        }
+        .client-logo-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 20px rgba(11,25,44,0.06);
+            transform: translateY(-3px) scale(1.03);
+        }
+        .client-logo-card img {
+            max-height: 48px;
+            max-width: 150px;
+            width: auto;
+            object-fit: contain;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+        .client-logo-card:hover img {
+            opacity: 1;
+        }
+        .client-logo-card span {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+            letter-spacing: -0.2px;
+        }
+
+        @keyframes scrollLogos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 1.75rem)); }
+        }
+
+        /* Modal Popup Window */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11,25,44,0.65); backdrop-filter: blur(5px);
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 2000; padding: 1rem;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-box {
+            background: var(--white); max-width: 600px; width: 100%; border-radius: 12px; overflow: hidden; transform: translateY(20px); transition: transform 0.3s ease; box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+        .modal-overlay.active .modal-box { transform: translateY(0); }
+        .modal-box img { width: 100%; height: 260px; object-fit: cover; }
+        .modal-body { padding: 2.5rem; }
+        .modal-body h2 { color: var(--primary-color); margin-bottom: 0.75rem; font-weight: 800; }
+        .modal-body p { color: var(--text-light); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.8rem; }
+        .modal-actions { display: flex; gap: 1rem; }
+        .modal-btn-primary { background: var(--accent-color); color: var(--white); padding: 0.7rem 1.5rem; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+        .modal-btn-secondary { background: #e2e8f0; color: var(--text-dark); border: none; padding: 0.7rem 1.5rem; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: background 0.2s; }
+        .modal-btn-secondary:hover { background: #cbd5e1; }
+        [data-theme="dark"] .modal-btn-secondary { background: var(--border-color); color: #fff; }
+
+        /* Lively Enhanced Footer */
+        footer {
+            background: linear-gradient(135deg, #070e17, var(--primary-color));
+            color: var(--white);
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        footer::before {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        .footer-brand p { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 1.2rem 0 1.5rem; }
+        .footer-socials { display: flex; gap: 0.8rem; }
+        .social-icon {
+            width: 38px; height: 38px;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            color: var(--white); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            background: var(--accent-color); color: var(--white); border-color: var(--accent-color); transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            font-size: 1.15rem; margin-bottom: 1.4rem; font-weight: 700; letter-spacing: 0.5px; color: var(--white); position: relative;
+        }
+        .footer-col h4::after {
+            content: ''; position: absolute; left: 0; bottom: -6px; width: 30px; height: 2px; background: var(--accent-color);
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.85rem; }
+        .footer-col ul li a {
+            color: #94a3b8; text-decoration: none; transition: all 0.2s; font-size: 0.95rem; display: inline-block;
+        }
+        .footer-col ul li a:hover { color: var(--accent-color); transform: translateX(4px); }
+
+        .footer-newsletter p { color: #94a3b8; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.2rem; }
+        .newsletter-form { display: flex; flex-direction: column; gap: 0.75rem; }
+        .newsletter-input {
+            padding: 0.8rem 1rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.05); color: var(--white); font-size: 0.9rem; outline: none; transition: border-color 0.3s;
+        }
+        .newsletter-input::placeholder { color: #64748b; }
+        .newsletter-input:focus { border-color: var(--accent-color); }
+        .newsletter-btn {
+            background: var(--accent-color); color: var(--white); border: none; padding: 0.8rem;
+            border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background 0.3s, transform 0.2s;
+        }
+        .newsletter-btn:hover { background: #0070aa; transform: translateY(-2px); }
+
+        .footer-bottom {
+            max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem; display: flex; justify-content: space-between; align-items: center;
+            color: #64748b; font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-legal-links { display: flex; gap: 1.5rem; }
+        .footer-legal-links a { color: #64748b; text-decoration: none; transition: color 0.2s; }
+        .footer-legal-links a:hover { color: var(--white); }
+
+        /* Responsive Adjustments */
+        @media (max-width: 950px) {
+            .footer-container { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+        }
+        @media (max-width: 600px) {
+            .footer-container { grid-template-columns: 1fr; gap: 2.5rem; }
+            .footer-bottom { flex-direction: column; text-align: center; justify-content: center; }
+            nav a.logo img { height: 35px; }
+        }
+
+        @media (max-width: 850px) {
+            .nav-controls {
+                display: flex;
+            }
+            .theme-toggle-mobile {
+                display: flex;
+            }
+            .nav-right-group .theme-toggle-btn {
+                display: none;
+            }
+            .burger-menu {
+                display: flex;
+            }
+            .nav-right-group {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--header-bg);
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                border-bottom: 1px solid var(--border-color);
+                align-items: flex-start;
+                gap: 1.5rem;
+                z-index: 1100;
+            }
+            .nav-right-group.active {
+                display: flex;
+            }
+            #navLinks {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                width: 100%;
+            }
+            .btn-quote {
+                width: 100%;
+                text-align: center;
+            }
+            .dropdown-menu {
+                position: static !important;
+                box-shadow: none !important;
+                border: none !important;
+                background: transparent !important;
+                padding-left: 1rem !important;
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+            }
+            .highlights-bar { grid-template-columns: 1fr; margin-top: 2rem; }
+            .overview-section, .why-grid, .stats-container, .mid-contact-card { grid-template-columns: 1fr; gap: 2.5rem; }
+            .carousel-content h1 { font-size: 2.4rem; }
+            .hero-carousel { height: 75vh; }
+            .mid-contact-card { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="citykool logo.png" alt="City Kool Integrated Solutions Logo">
+            </a>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle-btn theme-toggle-mobile" id="themeToggleMobile" aria-label="Toggle Dark/Light Theme">
+                    <i class="fas fa-moon" id="themeIconMobile"></i>
+                </button>
+
+                <button class="burger-menu" id="burgerBtn" aria-label="Toggle Navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+            <div class="nav-right-group" id="navRightGroup">
+                <ul id="navLinks">
+                    <li class="home-li"><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="regions.html" class="dropdown-toggle">Regional Branches ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="regions.html">Nairobi (HQ)</a></li>
+                            <li><a href="upholstery.html">ELITE STITCH & SHINE</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Dark/Light Theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <a href="contact.html" class="btn-quote">Get A Quote</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Dynamic Hero Carousel Section -->
+        <section class="hero-carousel">
+            <!-- Slide 1 -->
+            <div class="carousel-slide active" style="background-image:url(site\ pic.jpg)">
+                <div class="carousel-content">
+                    <span class="carousel-badge">Engineering Excellence</span>
+                    <h1>Building Trust Through Superior Craftsmanship</h1>
+                    <p>Delivering robust infrastructure, civil works, and technical execution designed for longevity across Uganda and East Africa.</p>
+                    <div class="hero-actions">
+                        <a href="services.html" class="btn-primary">Explore Divisions</a>
+                        <a href="contact.html" class="btn-outline">Schedule Consultation</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-slide" style="background-image: url(HVAC.jpg);">
+                <div class="carousel-content">
+                    <span class="carousel-badge">Advanced Climate Control</span>
+                    <h1>Precision Refrigeration & HVAC Systems</h1>
+                    <p>State-of-the-art climate stability, cold-room preservation, and energy-efficient ventilation for modern corporate & retail spaces.</p>
+                    <div class="hero-actions">
+                        <a href="services.html" class="btn-primary">View HVAC Services</a>
+                        <a href="contact.html" class="btn-outline">Request Quote</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-slide" style="background-image: url(Electrical\ system.jpg);">
+                <div class="carousel-content">
+                    <span class="carousel-badge">Power & Infrastructure</span>
+                    <h1>Heavy Electrical & Grid Solutions</h1>
+                    <p>Comprehensive commercial electrical installations, distribution panels, and sub-station networks engineered for complete safety.</p>
+                    <div class="hero-actions">
+                        <a href="projects.html" class="btn-primary">See Our Portfolio</a>
+                        <a href="contact.html" class="btn-outline">Contact Engineers</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Navigation Dots -->
+            <div class="carousel-nav" id="carouselDots">
+                <button class="carousel-dot active" onclick="currentSlide(0)"></button>
+                <button class="carousel-dot" onclick="currentSlide(1)"></button>
+                <button class="carousel-dot" onclick="currentSlide(2)"></button>
+            </div>
+        </section>
+
+        <!-- Highlights Bar -->
+        <section class="highlights-bar">
+            <div class="highlight-card" onclick="openModal('Incident-Free Safety', 'We hold ourselves strictly accountable for establishing safe, secure, and fully compliant working environments on every job site through rigorous HSE protocols and continuous training.', 'site pic.jpg')">
+                <h3>Incident-Free Safety</h3>
+                <p>We hold ourselves strictly accountable for establishing safe, secure, and fully compliant working environments on every job site.</p>
+            </div>
+            <div class="highlight-card" onclick="openModal('Rigorous Technical Quality', 'Excellence isnt an afterthought. Precision engineering, premium materials, and structured workflows drive all our operations to ensure lasting infrastructure.', 'Electrical-Installation.jpg')">
+                <h3>Rigorous Technical Quality</h3>
+                <p>Excellence isn't an afterthought. Precision engineering, premium materials, and structured workflows drive all our operations.</p>
+            </div>
+            <div class="highlight-card" onclick="openModal('Multidisciplinary Leadership', 'Our experienced management and engineering teams champion a service-first mindset to guarantee superior long-term results across multi-sector projects.', 'excavator.jpg')">
+                <h3>Multidisciplinary Leadership</h3>
+                <p>Our experienced management and engineering teams champion a service-first mindset to guarantee superior long-term results.</p>
+            </div>
+        </section>
+
+        <!-- Company Overview Section with Carousel -->
+        <section class="overview-section">
+            <div class="overview-text">
+                <span>About City Kool Integrated Solutions</span>
+                <h2>Smart, Safe, and Sustainable Solutions Under One Roof</h2>
+                <p>At CityKool Integrated Solutions Ltd, we combine decades of collective technical experience, innovation, and industry best practices to offer a full spectrum of engineering infrastructure services.</p>
+                <p>From powering commercial enterprises and building municipal roadways to executing advanced HVAC layouts, we engineer with long-term reliability in mind.</p>
+                <a href="services.html" class="sector-btn">Discover All Core Divisions &rarr;</a>
+            </div>
+            <div class="overview-img-wrapper" onclick="openModal('Engineering Infrastructure Overview', 'At CityKool Integrated Solutions Ltd, we combine decades of collective technical experience, innovation, and industry best practices to offer a full spectrum of engineering infrastructure services.', 'solar.jpg')">
+                <div class="overview-slide active">
+                    <img src="solar.jpg" alt="Engineering Operations">
+                </div>
+                <div class="overview-slide">
+                    <img src="excavator.jpg" alt="Civil Works Execution">
+                </div>
+                <div class="overview-slide">
+                    <img src="hvac setup.jpg" alt="HVAC Setup">
+                </div>
+                
+                <div class="overview-dots">
+                    <button class="overview-dot active" onclick="event.stopPropagation(); currentOverviewSlide(0)"></button>
+                    <button class="overview-dot" onclick="event.stopPropagation(); currentOverviewSlide(1)"></button>
+                    <button class="overview-dot" onclick="event.stopPropagation(); currentOverviewSlide(2)"></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Statistics Band -->
+        <section class="stats-band">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3 class="stat-counter" data-target="100" data-suffix="+">0+</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-counter" data-target="86" data-suffix="+">0+</h3>
+                    <p>Trusted Customers</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-counter" data-target="100" data-suffix="%">0%</h3>
+                    <p>Safety Compliance</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Technical Support</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Middle Direct Contact / Support Section -->
+        <section class="mid-contact-section">
+            <div class="mid-contact-card">
+                <div class="mid-contact-info">
+                    <span>Direct Engineering Desk</span>
+                    <h2>Have a Project in Mind? Let's Talk Details.</h2>
+                    <p>Our engineering coordinators and technical support teams are ready to discuss your requirements, provide estimates, or schedule site evaluations.</p>
+                    
+                    <div class="contact-details-grid">
+                        <div class="contact-detail-row">
+                            <div class="contact-icon-box">📞</div>
+                            <div class="contact-detail-text">
+                                <h4>Call Our Office</h4>
+                                <a href="tel:+256776717026">+256 776 717026</a>
+                                <a href="tel:+256772968266">+256 772 968266</a>
+                            </div>
+                        </div>
+                        <div class="contact-detail-row">
+                            <div class="contact-icon-box">✉️</div>
+                            <div class="contact-detail-text">
+                                <h4>Email Enquiries</h4>
+                                <a href="mailto:info@citykool.com">info@citykool.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-detail-row">
+                            <div class="contact-icon-box">📍</div>
+                            <div class="contact-detail-text">
+                                <h4>Headquarters Location</h4>
+                                <span>2 Wabigalo Rd, Kampala, Uganda</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mid-contact-action-box">
+                    <h3>Ready to Start?</h3>
+                    <p>Submit your project specifications or get an instant consultation scheduled with our lead engineers today.</p>
+                    <a href="contact.html" class="btn-mid-contact">Get A Custom Quote</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Primary Sectors Section -->
+        <div class="sectors-container">
+            <div class="sectors-inner">
+                <div class="section-header">
+                    <h2>Our Primary Engineering Divisions</h2>
+                    <p>Providing specialized, reliable solutions engineered specifically to meet modern industrial, commercial, and structural demands.</p>
+                </div>
+                <div class="sectors-grid">
+                    
+                    <!-- Refrigeration & HVAC -->
+                    <div class="sector-card" onclick="openModal('Refrigeration & HVAC', 'Engineered to provide climate stability, cold-room preservation, and precision air flow control across healthcare, corporate, and retail buildings with energy-efficient components.', 'HVAC.jpg')">
+                        <img src="HVAC.jpg" alt="HVAC">
+                        <div class="sector-content">
+                            <h3>Refrigeration & HVAC</h3>
+                            <p>Advanced commercial climate control, cold-room preservation, and energy-efficient ventilation for corporate and retail structures.</p>
+                            <button class="sector-btn" onclick="event.stopPropagation(); openModal('Refrigeration & HVAC', 'Engineered to provide climate stability, cold-room preservation, and precision air flow control across healthcare, corporate, and retail buildings with energy-efficient components.', 'HVAC.jpg')">Learn More &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Civil Engineering & Roads -->
+                    <div class="sector-card" onclick="openModal('Civil Engineering & Road Works', 'Comprehensive municipal access road design, structural site grading, heavy concrete paving, and advanced drainage solutions built to regional durability codes.', 'Civil-Engineering-Road-Works.jpg')">
+                        <img src="Civil-Engineering-Road-Works.jpg" alt="Civil Works">
+                        <div class="sector-content">
+                            <h3>Civil Engineering & Roads</h3>
+                            <p>Comprehensive municipal access road design, heavy site grading, durable concrete works, and structured drainage systems.</p>
+                            <button class="sector-btn" onclick="event.stopPropagation(); openModal('Civil Engineering & Road Works', 'Comprehensive municipal access road design, structural site grading, heavy concrete paving, and advanced drainage solutions built to regional durability codes.', 'Civil-Engineering-Road-Works.jpg')">Learn More &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Electrical Installations -->
+                    <div class="sector-card" onclick="openModal('Electrical Installation & Services', 'Full-scale commercial grid hookups, sub-station distribution panels, industrial wiring, and rigorous safety testing performed by certified electrical engineers.', 'Electrical-Installation.jpg')">
+                        <img src="Electrical-Installation.jpg" alt="Electrical">
+                        <div class="sector-content">
+                            <h3>Electrical Installations</h3>
+                            <p>Full-scale commercial grid connections, heavy power distribution panels, structured wiring, and compliance inspections.</p>
+                            <button class="sector-btn" onclick="event.stopPropagation(); openModal('Electrical Installation & Services', 'Full-scale commercial grid hookups, sub-station distribution panels, industrial wiring, and rigorous safety testing performed by certified electrical engineers.', 'Electrical-Installation.jpg')">Learn More &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Telecommunication Infrastructure -->
+                    <div class="sector-card" onclick="openModal('Telecommunication Infrastructure', 'End-to-end telecom site construction, heavy tower installations, shelter setups, and reliable network rollout support tailored for leading carriers across East Africa.', 'Telecommunication-Infrastructure.jpg')">
+                        <img src="Telecommunication-Infrastructure.jpg" alt="Telecommunications">
+                        <div class="sector-content">
+                            <h3>Telecommunication Infrastructure</h3>
+                            <p>End-to-end telecom site construction, tower installations, and seamless network rollout support for major regional operators.</p>
+                            <button class="sector-btn" onclick="event.stopPropagation(); openModal('Telecommunication Infrastructure', 'End-to-end telecom site construction, heavy tower installations, shelter setups, and reliable network rollout support tailored for leading carriers across East Africa.', 'Telecommunication-Infrastructure.jpg')">Learn More &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Gas Piping Systems -->
+                    <div class="sector-card" onclick="openModal('Gas Piping Systems', 'Secure, certified gas supply pipeline design, expert installation, and rigorous pressure testing engineered for commercial enterprises, industrial plants, and large facilities.', 'gas lining.jpg')">
+                        <img src="gas lining.jpg" alt="Gas Piping Systems">
+                        <div class="sector-content">
+                            <h3>Gas Piping Systems</h3>
+                            <p>Secure, certified gas supply pipeline design, installation, and rigorous pressure testing for commercial and industrial plants.</p>
+                            <button class="sector-btn" onclick="event.stopPropagation(); openModal('Gas Piping Systems', 'Secure, certified gas supply pipeline design, expert installation, and rigorous pressure testing engineered for commercial enterprises, industrial plants, and large facilities.', 'gas lining.jpg')">Learn More &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Mechanical Engineering -->
+                    <div class="sector-card" onclick="openModal('Mechanical Engineering', 'Specialized industrial machinery setup, heavy equipment installation, and precision piping fabrication managed by experienced mechanical engineers to guarantee maximum uptime.', 'mechanical engineering.jpg')">
+                        <img src="mechanical engineering.jpg" alt="Mechanical Engineering">
+                        <div class="sector-content">
+                            <h3>Mechanical Engineering</h3>
+                            <p>Specialized industrial machinery setup, heavy equipment installation, and precision piping fabrication ensuring maximum uptime.</p>
+                            <button class="sector-btn" onclick="event.stopPropagation(); openModal('Mechanical Engineering', 'Specialized industrial machinery setup, heavy equipment installation, and precision piping fabrication managed by experienced mechanical engineers to guarantee maximum uptime.', 'mechanical engineering.jpg')">Learn More &rarr;</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Choose Us Section -->
+        <section class="why-container">
+            <div class="section-header">
+                <h2>Why Industry Leaders Choose CityKool</h2>
+                <p>Our commitment to professional accountability, technical innovation, and safety sets our work apart.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-box" onclick="openModal('End-to-End Execution', 'We manage projects completely from initial concept blueprints and regulatory planning through to on-site assembly and post-commissioning maintenance.', 'solar.jpg')">
+                    <h3>End-to-End Execution</h3>
+                    <p>We manage projects completely from initial concept blueprints and regulatory planning through to on-site assembly and post-commissioning maintenance.</p>
+                </div>
+                <div class="why-box" onclick="openModal('Certified Engineering Team', 'Our workforce consists of licensed specialists who stay updated with regional structural standards and international safety protocols.', 'Electrical-Installation.jpg')">
+                    <h3>Certified Engineering Team</h3>
+                    <p>Our workforce consists of licensed specialists who stay updated with regional structural standards and international safety protocols.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trusted Partners & Clients Logo Carousel Section -->
+        <section class="clients-section">
+            <div class="section-header" style="margin-bottom: 2.5rem;">
+                <h2>Trusted by Industry Leaders & Institutions</h2>
+                <p>We are proud to collaborate with leading telecom corporations, enterprises, and public bodies across the region.</p>
+            </div>
+            <div class="logo-carousel-wrapper">
+                <div class="logo-track">
+                    <!-- Set 1 -->
+                    <div class="client-logo-card" onclick="openModal('ATC Kenya Partnership', 'Collaborating closely with ATC Kenya to construct and maintain critical telecommunication tower infrastructure and site power systems.', 'Telecommunication-Infrastructure.jpg')">
+                        <img src="atc kenya.png" alt="ATC Kenya" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                        <span style="display:none;">ATC Kenya</span>
+                    </div>
+                    <div class="client-logo-card" onclick="openModal('ATC Uganda Partnership', 'Providing comprehensive telecom site maintenance and engineering solutions for ATC Uganda network rollout.', 'Telecommunication-Infrastructure.jpg')">
+                        <img src="atc uganda.png" alt="ATC Uganda" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                        <span style="display:none;">ATC Uganda</span>
+                    </div>
+                    <div class="client-logo-card" onclick="openModal('MTN Partnership', 'Executing robust electrical and technical infrastructure installations to support MTN regional operations.', 'Electrical-Installation.jpg')">
+                        <img src="mtn.jpg" alt="MTN" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                        <span style="display:none;">MTN</span>
+                    </div>
+                    <div class="client-logo-card" onclick="openModal('Airtel Partnership', 'Delivering reliable engineering and site support infrastructure for Airtel network expansion projects.', 'Telecommunication-Infrastructure.jpg')">
+                        <img src="airtel.jpg" alt="Airtel" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                        <span style="display:none;">Airtel</span>
+                    </div>
+                    <div class="client-logo-card" onclick="openModal('Gemtel Partnership', 'Partnering with Gemtel on critical structural and telecommunication setups across the region.', 'Telecommunication-Infrastructure.jpg')">
+                        <img src="gemtel.jpg" alt="Gemtel" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                        <span>Gemtel</span>
+                    </div>
+                    <div class="client-logo-card" onclick="openModal('Uganda Telecom Partnership', 'Supporting Uganda Telecom with heavy infrastructure solutions, cabling, and technical maintenance.', 'Electrical-Installation.jpg')">
+                        <img src="uganda telecom.jpg" alt="uganda telecom" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                        <span>Uganda Telecom</span>
+                    </div>
+                    <div class="client-logo-card" onclick="openModal('Uganda Ministry of Local Government', 'Executing vital civil engineering, road works, and municipal infrastructure projects for public sector development.', 'Civil-Engineering-Road-Works.jpg')">
+                        <img src="mlg.jpeg" alt="mlg" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                        <span>Uganda Ministry of Local Government</span>
+                    </div>
+
+                    <!-- Duplicate Set for Seamless Infinite Loop -->
+                    <div class="client-logo-card" onclick="openModal('ATC Kenya Partnership', 'Collaborating closely with ATC Kenya to construct and maintain critical telecommunication tower infrastructure and site power systems.', 'Telecommunication-Infrastructure.jpg')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/ATC_Kenya_Logo.png" alt="ATC Kenya" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                        <span style="display:none;">ATC Kenya</span>
+                    </div>
+                    <div class="client-logo-card" onclick="openModal('ATC Uganda Partnership', 'Providing comprehensive telecom site maintenance and engineering solutions for ATC Uganda network rollout.', 'Telecommunication-Infrastructure.jpg')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/ATC_Kenya_Logo.png" alt="ATC Uganda" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                        <span style="display:none;">ATC Uganda</span>
+                    </div>
+                    <div class="client-logo-card" onclick="openModal('MTN Partnership', 'Executing robust electrical and technical infrastructure installations to support MTN regional operations.', 'Electrical-Installation.jpg')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/MTN_Logo.svg" alt="MTN" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                        <span style="display:none;">MTN</span>
+                    </div>
+                    <div class="client-logo-card" onclick="openModal('Airtel Partnership', 'Delivering reliable engineering and site support infrastructure for Airtel network expansion projects.', 'Telecommunication-Infrastructure.jpg')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Airtel_logo_%282010%29.svg" alt="Airtel" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                        <span style="display:none;">Airtel</span>
+                    </div>
+                    <div class="client-logo-card" onclick="openModal('Gemtel Partnership', 'Partnering with Gemtel on critical structural and telecommunication setups across the region.', 'Telecommunication-Infrastructure.jpg')">
+                        <span>Gemtel</span>
+                    </div>
+                    <div class="client-logo-card" onclick="openModal('Green Network Uganda', 'Collaborating on sustainable energy and infrastructure solutions across Uganda.', 'solar.jpg')">
+                        <span>Green Network Uganda</span>
+                    </div>
+                    <div class="client-logo-card" onclick="openModal('Uganda Telecom Partnership', 'Supporting Uganda Telecom with heavy infrastructure solutions, cabling, and technical maintenance.', 'Electrical-Installation.jpg')">
+                        <span>Uganda Telecom</span>
+                    </div>
+                    <div class="client-logo-card" onclick="openModal('Uganda Ministry of Local Government', 'Executing vital civil engineering, road works, and municipal infrastructure projects for public sector development.', 'Civil-Engineering-Road-Works.jpg')">
+                        <span>Uganda Ministry of Local Government</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Popup Window -->
+    <div class="modal-overlay" id="homeModal" onclick="closeModal(event)">
+        <div class="modal-box">
+            <img id="modalImg" src="" alt="Service Preview">
+            <div class="modal-body">
+                <h2 id="modalTitle">Service Title</h2>
+                <p id="modalDesc">Service details go here...</p>
+                <div class="modal-actions">
+                    <a href="contact.html" class="modal-btn-primary">Request Quote</a>
+                    <button class="modal-btn-secondary" onclick="closeModalDirect()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Lively Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <!-- Brand Column -->
+            <div class="footer-brand">
+                <a href="index.html" class="logo" style="margin-bottom: 0.5rem; display: inline-block;">
+                    <img src="citykool logo.png" alt="City Kool Integrated Solutions Logo" style="height: 45px;">
+                </a>
+                <p>Delivering premier engineering infrastructure, electrical grid setups, civil works, and climate control technology across East Africa.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
+                    <a href="#" class="social-icon" aria-label="X / Twitter">𝕏</a>
+                    <a href="#" class="social-icon" aria-label="YouTube">▶</a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="projects.html">Project Portfolio</a></li>
+                    <li><a href="regions.html">Regional Branches</a></li>
+                    <li><a href="upholstery.html">Upholstery</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Core Services -->
+            <div class="footer-col">
+                <h4>Core Divisions</h4>
+                <ul>
+                    <li><a href="services.html">Refrigeration & HVAC</a></li>
+                    <li><a href="services.html">Civil Engineering & Roads</a></li>
+                    <li><a href="services.html">Electrical Installations</a></li>
+                    <li><a href="services.html">Facility Maintenance</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Subscription Column -->
+            <div class="footer-col footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to get technical insights, company updates, and project highlights.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to CityKool updates!');">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe Now</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Copyright © 2026 Citykool Integrated Solutions Ltd. All Rights Reserved.</p>
+            <div class="footer-legal-links">
+                <a href="contact.html">Privacy Policy</a>
+                <a href="contact.html">Terms of Service</a>
+                <a href="contact.html">Safety Compliance</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Comprehensive JavaScript -->
+    <script>
+        // Dark Mode Functionality
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themeToggleMobile = document.getElementById('themeToggleMobile');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeIconMobile = document.getElementById('themeIconMobile');
+        const htmlElement = document.documentElement;
+        const savedTheme = localStorage.getItem('theme');
+
+        function updateThemeIcons(isDark) {
+            if (themeIcon) {
+                isDark ? themeIcon.classList.replace('fa-moon', 'fa-sun') : themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+            if (themeIconMobile) {
+                isDark ? themeIconMobile.classList.replace('fa-moon', 'fa-sun') : themeIconMobile.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+
+        if (savedTheme === 'dark') {
+            htmlElement.setAttribute('data-theme', 'dark');
+            updateThemeIcons(true);
+        }
+
+        function toggleTheme() {
+            const isDark = htmlElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                updateThemeIcons(false);
+            } else {
+                htmlElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                updateThemeIcons(true);
+            }
+        }
+
+        if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+
+        // 1. Hero Carousel Rotation Logic
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let carouselInterval = setInterval(nextSlide, 6000);
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slideIndex = (index + slides.length) % slides.length;
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(slideIndex + 1);
+        }
+
+        function currentSlide(index) {
+            clearInterval(carouselInterval);
+            showSlide(index);
+            carouselInterval = setInterval(nextSlide, 6000);
+        }
+
+        // 2. Company Overview Carousel Rotation Logic
+        let overviewIndex = 0;
+        const overviewSlides = document.querySelectorAll('.overview-slide');
+        const overviewDots = document.querySelectorAll('.overview-dot');
+        let overviewInterval = setInterval(nextOverviewSlide, 5000);
+
+        function showOverviewSlide(index) {
+            overviewSlides.forEach(slide => slide.classList.remove('active'));
+            overviewDots.forEach(dot => dot.classList.remove('active'));
+            
+            overviewIndex = (index + overviewSlides.length) % overviewSlides.length;
+            overviewSlides[overviewIndex].classList.add('active');
+            overviewDots[overviewIndex].classList.add('active');
+        }
+
+        function nextOverviewSlide() {
+            showOverviewSlide(overviewIndex + 1);
+        }
+
+        function currentOverviewSlide(index) {
+            clearInterval(overviewInterval);
+            showOverviewSlide(index);
+            overviewInterval = setInterval(nextOverviewSlide, 5000);
+        }
+
+        // 3. Performance Stats Counter Animation
+        const counters = document.querySelectorAll('.stat-counter');
+        let animated = false;
+
+        function runCounters() {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const suffix = counter.getAttribute('data-suffix');
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current) + suffix;
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target + suffix;
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        const statsSection = document.querySelector('.stats-band');
+        const observerOptions = { root: null, threshold: 0.3 };
+
+        const statsObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animated) {
+                    runCounters();
+                    animated = true;
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // 4. Mobile Burger Menu Toggle Logic
+        const burgerBtn = document.getElementById('burgerBtn');
+        const navRightGroup = document.getElementById('navRightGroup');
+
+        burgerBtn.addEventListener('click', () => {
+            navRightGroup.classList.toggle('active');
+            burgerBtn.classList.toggle('active');
+        });
+
+        // 5. Interactive Modal Popup Logic
+        const modal = document.getElementById('homeModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalImg = document.getElementById('modalImg');
+
+        function openModal(title, desc, imgSrc) {
+            modalTitle.innerText = title;
+            modalDesc.innerText = desc;
+            modalImg.src = imgSrc;
+            modal.classList.add('active');
+        }
+
+        function closeModalDirect() {
+            modal.classList.remove('active');
+        }
+
+        function closeModal(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>

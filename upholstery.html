@@ -1,0 +1,2984 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="es logo tab.jpg">
+    <title>Elite Stitch and Shine | Kampala - Upholstery & Car Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-light: #0A0A0A;
+            --bg-surface: rgba(18, 18, 18, 0.9);
+            --bg-glass: rgba(28, 28, 28, 0.7);
+            --glass-border: rgba(212, 175, 55, 0.2);
+            --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(212,175,55,0.05);
+            --text-dark: #F5F5F5;
+            --text-muted: #A3A3A3;
+            --primary: #D4AF37;
+            --primary-light: #F3E5AB;
+            --primary-dark: #AA820A;
+            --border-color: rgba(212, 175, 55, 0.25);
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body.light-mode {
+            --bg-light: #F4F4F6;
+            --bg-surface: rgba(255, 255, 255, 0.9);
+            --bg-glass: rgba(240, 240, 240, 0.7);
+            --glass-border: rgba(170, 130, 10, 0.2);
+            --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            --text-dark: #121212;
+            --text-muted: #666666;
+            --primary: #B8860B;
+            --primary-light: #D4AF37;
+            --primary-dark: #8B6508;
+            --border-color: rgba(184, 134, 11, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .brand-font {
+            letter-spacing: -0.01em;
+            font-weight: 700;
+        }
+
+        /* Fluid Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        /* Updated Logo Box: Open, borderless, transparent */
+        .logo-box {
+            width: 55px;
+            height: 55px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.1rem;
+            box-shadow: none;
+            overflow: hidden;
+        }
+
+        .logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+            display: block;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.3s, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Scale hover / press */
+        .nav-links a:hover {
+            transform: scale(1.08);
+        }
+        .nav-links a:active {
+            transform: scale(0.95);
+        }
+
+        /* Ripple effect on nav links */
+        .nav-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.25);
+            transform: scale(0);
+            animation: rippleAnim 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        body.light-mode .nav-ripple {
+            background: rgba(184, 134, 11, 0.2);
+        }
+
+        @keyframes rippleAnim {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-btn {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .theme-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Hero Section 1: Main Landing */
+        .hero {
+            height: 95vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1.5rem;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+        }
+
+        .hero-glass-box {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            padding: 4rem 3rem;
+            max-width: 850px;
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .hero span {
+            color: var(--primary-light);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            color: var(--text-dark);
+            margin-bottom: 1.2rem;
+            line-height: 1.15;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            display: inline;
+            letter-spacing: normal;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 2.2rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #0A0A0A;
+            border: 1px solid var(--primary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: var(--transition);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+            cursor: pointer;
+        }
+
+        body.light-mode .btn-primary {
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+            filter: brightness(1.1);
+        }
+
+        /* Hero Section 2: Team Showcase */
+        .team-hero {
+            height: 80vh;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 4rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.3) 100%), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .team-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .team-hero-content span {
+            color: var(--primary-light);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .team-hero-content h2 {
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .team-hero-content p {
+            color: #E2E8F0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Sections General */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .bg-section-wrapper {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 3rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .bg-section-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 1;
+        }
+
+        .bg-section-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header span {
+            color: var(--primary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            color: var(--text-dark);
+        }
+
+        /* Mid-Contact Bar */
+        .mid-contact-bar {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 2rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .mid-contact-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .mid-contact-item h4 {
+            font-size: 0.8rem;
+            margin-bottom: 0.4rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .mid-contact-item p, .mid-contact-item a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .mid-contact-item a:hover {
+            color: var(--primary);
+        }
+
+        /* Content Blocks */
+        .content-block {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            padding: 3.5rem;
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .content-block h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        .content-block p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            font-size: 1.02rem;
+        }
+
+        /* CEO Section */
+        .ceo-section {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 4rem;
+            align-items: center;
+            box-shadow: var(--glass-shadow);
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 968px) {
+            .ceo-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 3rem 2rem;
+                gap: 2.5rem;
+            }
+            .ceo-img-wrap {
+                margin: 0 auto;
+                max-width: 300px;
+            }
+        }
+
+        .ceo-img-wrap {
+            width: 100%;
+            height: 420px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
+        }
+
+        .ceo-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .ceo-section:hover .ceo-img-wrap img {
+            transform: scale(1.03);
+        }
+
+        .ceo-content h3 {
+            font-size: 2.4rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-dark);
+        }
+
+        .ceo-title {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .ceo-content p {
+            color: var(--text-muted);
+            line-height: 1.75;
+            font-size: 1.05rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .ceo-quote {
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            background: var(--bg-glass);
+            border-left: 3px solid var(--primary);
+            padding: 1.2rem 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin: 1.5rem 0;
+            line-height: 1.6;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .personnel-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.8rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .personnel-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .personnel-info h5 {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+        }
+
+        .personnel-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Carousel Section */
+        .carousel-section {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .carousel-slide {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .carousel-img-wrap {
+            width: 100%;
+            height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .carousel-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .carousel-content h4 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .carousel-content p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .carousel-btns {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-btn {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary);
+            color: #0A0A0A;
+            border-color: var(--primary);
+        }
+
+        /* NEW INTERACTIVE FEATURE: Before / After Slider */
+        .comparison-slider-container {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--glass-shadow);
+            margin: 3rem 0;
+            user-select: none;
+        }
+
+        .comparison-img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden;
+        }
+
+        .comparison-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0; left: 0;
+            pointer-events: none;
+        }
+
+        .comparison-img.after {
+            width: 50%;
+            z-index: 2;
+            border-right: 2px solid var(--primary);
+        }
+
+        .comparison-slider-input {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0;
+            cursor: ew-resize;
+            z-index: 10;
+        }
+
+        .slider-handle-line {
+            position: absolute;
+            top: 0; bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: var(--primary);
+            z-index: 5;
+            pointer-events: none;
+            transform: translateX(-50%);
+        }
+
+        .slider-handle-btn {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 42px; height: 42px;
+            background: var(--primary);
+            color: #0A0A0A;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            pointer-events: none;
+        }
+
+        .comparison-label {
+            position: absolute;
+            bottom: 20px;
+            padding: 0.5rem 1rem;
+            background: rgba(10, 10, 10, 0.8);
+            color: #fff;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            z-index: 6;
+            pointer-events: none;
+        }
+
+        .comparison-label.left { left: 20px; }
+        .comparison-label.right { right: 20px; color: var(--primary); }
+
+        /* Lightbox Modal */
+        .lightbox-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .lightbox-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            max-width: 85%;
+            max-height: 85vh;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px; right: 30px;
+            background: var(--bg-surface);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .lightbox-close:hover {
+            background: var(--primary);
+            color: #0A0A0A;
+        }
+
+        .portfolio-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin-top: 3rem;
+        }
+
+        /* Gallery Overlay Card Styles */
+        .gallery-thumb-card {
+            position: relative;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--glass-shadow);
+            transition: var(--transition);
+            height: 220px;
+            cursor: pointer;
+        }
+
+        .gallery-thumb-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.4s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .gallery-thumb-card:hover img {
+            transform: scale(1.08);
+            filter: brightness(0.5);
+        }
+
+        .gallery-thumb-card:hover .gallery-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-overlay p {
+            color: #E2E8F0;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* Interiors & Materials Grid with Hover Overlays */
+        .interiors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .interior-card-hover {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--glass-shadow);
+            background: #000;
+            cursor: pointer;
+        }
+
+        .interior-card-hover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.4s ease;
+        }
+
+        .interior-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 10, 10, 0.82);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .interior-card-hover:hover img {
+            transform: scale(1.08);
+            filter: brightness(0.6);
+        }
+
+        .interior-card-hover:hover .interior-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .interior-overlay h4 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+        }
+
+        .interior-overlay p {
+            color: #E2E8F0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Materials Section */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .material-item-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .material-title-header {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .material-card-hover {
+            position: relative;
+            width: 100%;
+            height: 260px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--glass-shadow);
+            background: #000;
+            cursor: pointer;
+        }
+
+        .material-card-hover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.4s ease;
+        }
+
+        .material-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 10, 10, 0.82);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .material-card-hover:hover img {
+            transform: scale(1.08);
+            filter: brightness(0.6);
+        }
+
+        .material-card-hover:hover .material-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .material-overlay h4 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+        }
+
+        .material-overlay p {
+            color: #E2E8F0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Leader Dan Profile */
+        .leader-profile-box {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 3.5rem;
+            align-items: center;
+            box-shadow: var(--glass-shadow);
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 900px) {
+            .leader-profile-box {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 3rem 2rem;
+            }
+            .leader-img-wrap {
+                margin: 0 auto;
+                max-width: 280px;
+            }
+        }
+
+        .leader-img-wrap {
+            width: 100%;
+            height: 380px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .leader-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .leader-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-dark);
+        }
+
+        .leader-title {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+
+        .leader-content p {
+            color: var(--text-muted);
+            line-height: 1.75;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Car Brands Showcase Section */
+        .car-brands-section {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 4rem 2.5rem;
+            box-shadow: var(--glass-shadow);
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .brands-interactive-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: center;
+            text-align: left;
+        }
+
+        @media (max-width: 968px) {
+            .brands-interactive-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .brand-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .brand-tab {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-color);
+            padding: 1.1rem 1.5rem;
+            border-radius: 10px;
+            color: var(--text-dark);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-tab:hover, .brand-tab.active {
+            background: var(--primary);
+            color: #0A0A0A;
+            border-color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        .brand-display-panel {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .brand-display-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 0.5s ease;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .brand-display-bg.active {
+            opacity: 1;
+        }
+
+        .brand-display-bg::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 70%);
+        }
+
+        .brand-display-content {
+            position: relative;
+            z-index: 2;
+            padding: 2.5rem;
+            color: #FFFFFF;
+        }
+
+        .brand-display-content h3 {
+            font-size: 2rem;
+            margin-bottom: 0.6rem;
+            color: #FFFFFF;
+        }
+
+        .brand-display-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #E2E8F0;
+            font-weight: 400;
+        }
+
+        /* Inquiry Section */
+        .inquiry-middle-section {
+            display: flex;
+            justify-content: center;
+            padding: 3rem 1rem;
+        }
+
+        .inquiry-container {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            padding: 4rem 3rem;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 850px;
+            box-shadow: var(--glass-shadow);
+            text-align: center;
+        }
+
+        .inquiry-container h3 {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .inquiry-container p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .inquiry-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .inquiry-input {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-dark);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .inquiry-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Social Section */
+        .social-section {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 4rem 2.5rem;
+            text-align: center;
+            box-shadow: var(--glass-shadow);
+            margin-bottom: 4rem;
+        }
+
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-color);
+            padding: 2rem 2.5rem;
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 180px;
+            transition: var(--transition);
+        }
+
+        .social-card i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .social-card span {
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: var(--primary);
+            color: #0A0A0A;
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.25);
+        }
+
+        .social-card:hover i {
+            color: #0A0A0A;
+            transform: scale(1.08);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-info-box, .contact-form {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            padding: 3.5rem;
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .contact-info-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-item h4 {
+            font-size: 0.85rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-info-item p, .contact-info-item a {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1.1rem 1.4rem;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            font-size: 1rem;
+            outline: none;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 3.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 600;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 90px;
+            left: 30px;
+            width: 55px;
+            height: 55px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.6rem;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: whatsappPulse 2s ease-in-out infinite;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.12);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.6);
+        }
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 6px 30px rgba(37, 211, 102, 0.7); }
+        }
+
+        /* Phone Call Float Button */
+        .phone-float {
+            position: fixed;
+            bottom: 155px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0A0A0A;
+            font-size: 1.2rem;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+            transition: transform 0.3s ease;
+        }
+        .phone-float:hover {
+            transform: scale(1.12);
+        }
+
+        @media (max-width: 968px) {
+            .whatsapp-float {
+                bottom: 85px;
+                left: 18px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.4rem;
+            }
+            .phone-float {
+                bottom: 145px;
+                left: 18px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        /* Scroll Reveal Animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            /* CSS fallback: make visible even if JS fails */
+            animation: revealFallback 0.01s ease 2s forwards;
+        }
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            animation: none;
+        }
+        @keyframes revealFallback {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Enhanced Toast Notification */
+        .form-toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 1.8rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            z-index: 3000;
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            backdrop-filter: blur(15px);
+        }
+        .form-toast.success {
+            background: rgba(16, 185, 129, 0.95);
+            color: #fff;
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+        .form-toast.error {
+            background: rgba(239, 68, 68, 0.95);
+            color: #fff;
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
+        }
+        .form-toast.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+        }
+
+        /* Loading Spinner */
+        .btn-spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid rgba(255,255,255,0.3);
+            border-top-color: #0A0A0A;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+        body.light-mode .btn-spinner {
+            border-top-color: #fff;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Workshop Map Section - Theme Aware */
+        .workshop-map-section {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 2rem 0;
+        }
+        .workshop-map-section h3 {
+            color: var(--text-primary);
+        }
+        .workshop-map-section p {
+            color: var(--text-muted);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: var(--bg-surface);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            color: #0A0A0A;
+            transform: translateY(-4px);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1101;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:active {
+            transform: scale(0.9);
+        }
+
+        /* Mobile overlay backdrop */
+        .mobile-nav-overlay {
+            display: none;
+            position: sticky;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1040;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        @media (max-width: 968px) {
+            .menu-toggle {
+                display: block;
+            }
+            .mobile-nav-overlay {
+                display: block;
+            }
+            .nav-links {
+                display: flex;
+                position: fixed;
+                top: 0; right: -300px;
+                width: 280px;
+                height: 100vh;
+                background: var(--bg-surface);
+                backdrop-filter: blur(25px);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                border-left: 1px solid var(--border-color);
+                z-index: 1050;
+                gap: 0.3rem;
+                overflow-y: auto;
+                transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links li {
+                width: 100%;
+            }
+            .nav-links a {
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+                padding: 1rem 1.2rem;
+                border-radius: 10px;
+                font-size: 0.85rem;
+                transition: background 0.2s, color 0.3s, transform 0.25s, padding-left 0.3s;
+                border-bottom: none;
+            }
+            .nav-links a::after {
+                display: none;
+            }
+            .nav-links a:hover,
+            .nav-links a:active {
+                background: var(--bg-glass);
+                padding-left: 1.5rem;
+                transform: scale(1.02);
+            }
+            .nav-links a.active {
+                background: var(--bg-glass);
+                color: var(--primary);
+                border-left: 3px solid var(--primary);
+                border-radius: 0 10px 10px 0;
+            }
+        }
+
+        /* ===== MOBILE RESPONSIVE ENHANCEMENTS ===== */
+        @media (max-width: 768px) {
+            .hero-glass-box {
+                padding: 2rem 1.2rem !important;
+            }
+            .hero-glass-box h1 {
+                font-size: 1.8rem !important;
+            }
+            .mid-contact-bar {
+                flex-direction: column !important;
+                gap: 0.8rem !important;
+                text-align: center !important;
+                padding: 1.5rem 1rem !important;
+            }
+            .services-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+                padding: 0 0.8rem !important;
+            }
+            .service-card {
+                padding: 1.5rem 1rem !important;
+            }
+            .portfolio-gallery-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .interiors-grid {
+                grid-template-columns: 1fr 1fr !important;
+            }
+            .materials-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 0.8rem !important;
+            }
+            .material-card {
+                padding: 1.2rem 0.8rem !important;
+            }
+            .inquiry-container {
+                padding: 1.5rem 1rem !important;
+            }
+            .inquiry-form .inquiry-input {
+                font-size: 0.95rem !important;
+                padding: 0.8rem 1rem !important;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+                padding: 0 0.8rem !important;
+            }
+            .social-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 0.8rem !important;
+            }
+            .social-card {
+                padding: 1.2rem !important;
+            }
+            .car-brands-section {
+                padding: 2rem 1rem !important;
+            }
+            .brand-tab {
+                padding: 0.5rem 0.8rem !important;
+                font-size: 0.75rem !important;
+            }
+            .brand-display {
+                min-height: 250px !important;
+            }
+            .carousel-container {
+                border-radius: 0 !important;
+            }
+            .leader-profile-box {
+                padding: 1.5rem 1rem !important;
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+            .leader-profile-box img {
+                width: 120px !important;
+                height: 120px !important;
+            }
+            .ceo-section {
+                padding: 2rem 1rem !important;
+            }
+            section {
+                padding-left: 0.8rem !important;
+                padding-right: 0.8rem !important;
+            }
+            .carousel-section {
+                padding: 1.5rem 0.8rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-glass-box h1 {
+                font-size: 1.5rem !important;
+            }
+            .hero-glass-box p {
+                font-size: 0.9rem !important;
+            }
+            .interiors-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .materials-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .social-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .brand-tabs {
+                flex-wrap: wrap !important;
+                gap: 0.4rem !important;
+            }
+        }
+
+        /* ===== ENHANCED VISUAL EFFECTS ===== */
+
+        /* Glowing section borders on scroll */
+        section.scroll-reveal.revealed {
+            animation: sectionGlow 1s ease-out;
+        }
+        @keyframes sectionGlow {
+            0% { box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0); }
+            30% { box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.3); }
+            100% { box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0); }
+        }
+
+        /* Enhanced gallery overlay with shimmer */
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -75%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.08), transparent);
+            transform: skewX(-15deg);
+            z-index: 2;
+            transition: left 0.6s ease;
+            pointer-events: none;
+        }
+        .gallery-item:hover::before {
+            left: 125%;
+        }
+
+        /* Service cards hover lift */
+        .service-card {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Material cards hover tilt */
+        .material-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .material-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.12);
+        }
+
+        /* Social cards hover glow */
+        .social-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .social-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+            border-color: var(--primary);
+        }
+
+        /* Hero glass enhanced hover */
+        .hero-glass-box {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hero-glass-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Page transition overlay */
+        .page-transition-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #0A0A0A, #151515);
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 0.6s ease;
+            /* CSS fallback: auto-fade even if JS fails */
+            animation: fadeOverlayOut 0.6s ease 1.5s forwards;
+        }
+        .page-transition-overlay.loaded {
+            opacity: 0;
+            animation: none;
+        }
+        @keyframes fadeOverlayOut {
+            to { opacity: 0; }
+        }
+
+        /* Particle dots floating in hero area */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.3);
+            pointer-events: none;
+            animation: particleFloat linear infinite;
+        }
+        @keyframes particleFloat {
+            0% { transform: translateY(0) scale(1); opacity: 0.3; }
+            50% { opacity: 0.6; }
+            100% { transform: translateY(-200px) scale(0.5); opacity: 0; }
+        }
+
+        /* Brand tabs hover effect */
+        .brand-tab {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .brand-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+        .brand-tab:active {
+            transform: scale(0.96);
+        }
+
+        /* Mid contact bar enhanced hover */
+        .mid-contact-bar a {
+            transition: color 0.3s, transform 0.2s;
+        }
+        .mid-contact-bar a:hover {
+            color: var(--primary) !important;
+            transform: scale(1.05);
+            display: inline-block;
+        }
+
+        /* Form input focus glow */
+        .form-control:focus, .inquiry-input:focus {
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+        }
+
+        /* Enhanced button interactions */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+        }
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 0; height: 0;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+        }
+        .btn-primary:active::after {
+            width: 300px; height: 300px;
+        }
+
+        /* Before/after slider enhanced */
+        .comparison-slider input[type=range] {
+            cursor: ew-resize;
+        }
+    </style>
+</head>
+<body id="home-top">
+    <!-- Page Transition Overlay -->
+    <div class="page-transition-overlay" id="pageTransition"></div>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/256776717026?text=Hello%20Elite%20Stitch%20And%20Shine!%20I%20would%20like%20to%20inquire%20about%20your%20services." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Floating Phone Button -->
+    <a href="tel:+256776717026" class="phone-float" aria-label="Call Us">
+        <i class="fa-solid fa-phone"></i>
+    </a>
+
+    <!-- Header / Liquid Glass Navigation -->
+    <header>
+        <nav>
+            <a href="#home-top" class="logo-container">
+                <div class="logo-box">
+                    <img src="Upholstery logo.jpeg" alt="Elite Stitch and Shine Logo">
+                </div>
+                <div class="logo-text">
+                    Elite Stitch And Shine
+                    <span>Kampala</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#team-hero-section">Our Team</a></li>
+                <li><a href="#ceo">CEO</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#works">Works</a></li>
+                <li><a href="#interiors">Interiors</a></li>
+                <li><a href="#brands">Car Brands</a></li>
+                <li><a href="index.html">Citykool</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-btn" id="themeToggle" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-sun" id="themeIcon"></i>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section 1: Main Landing -->
+    <section id="home" class="hero" style="margin-top: 60px; padding: 0 1.5rem;">
+        <div class="hero-particles" id="heroParticles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: 1;"></div>
+        <div class="hero-glass-box scroll-reveal">
+            <span>Kampala’s Premier Automotive Upholstery & Care</span>
+            <h1>Elite Stitch And <span>Shine</span></h1>
+            <p>Your dependable local destination for professional car seat upholstery, precision cabin restorations, custom sofa re-upholstering, thorough body care, and reliable everyday washing services.</p>
+            <a href="#contact" class="btn-primary">Book a Service</a>
+        </div>
+    </section>
+
+    <!-- Hero Section 2: Team Picture Showcase -->
+    <section id="team-hero-section" class="team-hero" style="max-width: 100%; margin: 0; padding: 0;">
+        <div style="max-width: 1300px; width: 100%; margin: 0 auto; padding: 5rem 2rem; position: relative; z-index: 2;">
+            <div class="team-hero-content">
+                <span>The Hands-On Experts</span>
+                <h2>Dedicated to Quality Care</h2>
+                <p>Meet our skilled workshop crew and wash supervisors committed to keeping every vehicle looking pristine, comfortable, and well-maintained on Kampala's roads.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mid-Page Contact Breakout Bar -->
+    <div class="mid-contact-bar scroll-reveal">
+        <div class="mid-contact-container">
+            <div class="mid-contact-item">
+                <h4>Direct Phone</h4>
+                <p><a href="tel:+256776717026">+256 776 717 026</a></p>
+            </div>
+            <div class="mid-contact-item">
+                <h4>Workshop Location</h4>
+                <p>2 Wabigalo Road, Kampala, Uganda</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Philosophy Background Wrapper -->
+    <div class="bg-section-wrapper" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1920');">
+        <div class="bg-section-inner">
+            <div class="content-block scroll-reveal">
+                <h3>Our Approach to Everyday Vehicle & Furniture Care</h3>
+                <p>Every car and living space deserves reliable maintenance, durable materials, and meticulous cleaning to perform at its best. At Elite Stitch And Shine, we focus on practical upholstery repairs, comfortable seating upgrades, home/office sofa re-upholstering, and thorough cleaning routines that protect your assets.</p>
+                <p>Browse through our workshop sections below to explore our standard packages, material choices, and dedicated team ready to service your needs.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CEO Section (Ernest Wekoto) -->
+    <section id="ceo">
+        <div class="section-header">
+            <span>Leadership</span>
+            <h2>Meet Our Senior Marketer & Executive</h2>
+        </div>
+
+        <div class="ceo-section scroll-reveal">
+            <div class="ceo-img-wrap">
+                <img src="Ernest(1).jpg" alt="Ernest Wekoto - Leadership">
+            </div>
+            <div class="ceo-content">
+                <h3>Ernest Wekoto</h3>
+                <span class="ceo-title">Executive Leadership</span>
+                <p>Our leadership ensures Elite Stitch And Shine delivers dependable, high-quality automotive upholstery, sofa restoration, and cleaning solutions across Kampala.</p>
+                <div class="ceo-quote">
+                    "Good work speaks for itself. We treat every car and sofa with the same dedication and precision as our own."
+                </div>
+                <p>Committed to building brand excellence, our team continues to expand practical services, ensuring every customer gets straightforward, reliable results at fair value.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header">
+            <span>Professional Services</span>
+            <h2>What We Offer</h2>
+        </div>
+
+        <div class="services-grid scroll-reveal">
+            <div class="service-card">
+                <h3>Car Upholstery & Cabin Repairs</h3>
+                <p>Professional seat recovering, foam replacements, torn fabric repairs, roof liner restoration, and custom steering wheel stitching built for everyday durability.</p>
+                
+                <div class="personnel-profile">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" alt="Dan - Workshop Manager" class="personnel-img">
+                    <div class="personnel-info">
+                        <h5>Dan</h5>
+                        <p>Workshop Manager overseeing all upholstery & technical repairs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>Sofa & Living Furniture Upholstery</h3>
+                <p>Complete custom re-upholstering and foam refilling for home and office sofas, lounge chairs, and cushion sets, restoring elegance and comfort to your spaces.</p>
+                
+                <div class="personnel-profile">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" alt="Dan - Lead Specialist" class="personnel-img">
+                    <div class="personnel-info">
+                        <h5>Dan</h5>
+                        <p>Specialist overseeing furniture frame restorations and stitching.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>Car Wash, Interior & Engine Care</h3>
+                <p>Thorough vehicle cleaning including exterior washing, cabin vacuuming, seat wiping, floor mat detailing, and safe, degreased engine bay rinses.</p>
+
+                <div class="personnel-profile">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200" alt="Jeremy - Wash Supervisor" class="personnel-img">
+                    <div class="personnel-info">
+                        <h5>Jeremy</h5>
+                        <p>Supervisor managing wash operations and detailing quality.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carousel & Gallery Section -->
+    <section id="works">
+        <div class="section-header">
+            <span>Recent Projects</span>
+            <h2>Our Workshop Gallery</h2>
+        </div>
+
+        <h3 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.4rem; color: var(--primary);">Interactive Before / After Restoration Preview</h3>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem;">Drag the slider handle across the image to compare the worn condition vs our workshop's finished restoration.</p>
+        
+        <div class="comparison-slider-container" id="comparisonSlider">
+            <div class="comparison-img" style="background: #111;">
+                <img src="https://images.unsplash.com/photo-1584467735811-62846ef198d9?auto=format&fit=crop&q=80&w=1200" alt="Before Restoration">
+                <span class="comparison-label left">BEFORE REPAIR</span>
+            </div>
+            <div class="comparison-img after" id="comparisonAfterLayer">
+                <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=1200" alt="After Restoration">
+                <span class="comparison-label right">AFTER RESTORATION</span>
+            </div>
+            <input type="range" min="0" max="100" value="50" class="comparison-slider-input" id="comparisonRange">
+            <div class="slider-handle-line" id="sliderLine">
+                <div class="slider-handle-btn"><i class="fa-solid fa-arrows-left-right"></i></div>
+            </div>
+        </div>
+
+        <div class="carousel-section scroll-reveal">
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <div class="carousel-img-wrap" onclick="openLightbox('https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=1200')">
+                            <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=800" alt="Leather Seat Restoration">
+                        </div>
+                        <div class="carousel-content">
+                            <h4>1. Full Leather Seat Restoration</h4>
+                            <p>Complete transformation of worn-out fabric seats into durable synthetic and genuine leather finishes, tailored for comfort and easy cleaning.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="carousel-img-wrap" onclick="openLightbox('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1200')">
+                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=800" alt="Sofa Re-upholstery">
+                        </div>
+                        <div class="carousel-content">
+                            <h4>2. Living Room Sofa Re-upholstering</h4>
+                            <p>Revitalizing living room sofas with premium high-density foam padding and resilient modern fabric finishes for maximum comfort.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="carousel-img-wrap" onclick="openLightbox('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=1200')">
+                            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=800" alt="Engine Bay Detailing">
+                        </div>
+                        <div class="carousel-content">
+                            <h4>3. Safe Engine Bay Cleaning</h4>
+                            <p>Supervised by Jeremy, our engine wash safely removes grease and dirt buildup without harming electrical components, keeping your engine bay spotless.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="carousel-img-wrap" onclick="openLightbox('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&q=80&w=1200')">
+                            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&q=80&w=800" alt="Steering Wheel Cover">
+                        </div>
+                        <div class="carousel-content">
+                            <h4>4. Steering Wheel Stitching</h4>
+                            <p>Hand-stitched leather steering wheel wrap providing better grip and a clean finish, managed expertly by Dan and his workshop team.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-btns">
+                <button class="carousel-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="carousel-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <h3 style="text-align: center; margin: 3.5rem 0 2rem; font-size: 1.6rem; color: var(--primary);">Completed Workshop Jobs (Click to Expand)</h3>
+        
+        <div class="portfolio-gallery-grid scroll-reveal">
+            <div class="gallery-thumb-card" onclick="openLightbox('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200')">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=500" alt="Custom Seat Cover">
+                <div class="gallery-overlay">
+                    <h4>Custom Seat Protection</h4>
+                    <p>Tailored seat covers designed for daily driving comfort and superior stain resistance in Kampala traffic.</p>
+                </div>
+            </div>
+            <div class="gallery-thumb-card" onclick="openLightbox('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=1200')">
+                <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=500" alt="Sofa Restoration">
+                <div class="gallery-overlay">
+                    <h4>Sofa Restoration</h4>
+                    <p>High-density foam replacement and executive fabric re-trimming managed by Dan.</p>
+                </div>
+            </div>
+            <div class="gallery-thumb-card" onclick="openLightbox('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=1200')">
+                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=500" alt="Cabin Vacuum">
+                <div class="gallery-overlay">
+                    <h4>Cabin Deep Vacuum</h4>
+                    <p>Thorough interior dust extraction, upholstery conditioning, and complete floor mat detailing.</p>
+                </div>
+            </div>
+            <div class="gallery-thumb-card" onclick="openLightbox('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=1200')">
+                <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=500" alt="Door Panel Stitching">
+                <div class="gallery-overlay">
+                    <h4>Door Panel Stitching</h4>
+                    <p>Precision thread reinforcement and matching leatherette inserts for clean vehicle door cards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interiors Section with Hover Overlays -->
+    <div class="bg-section-wrapper" style="background-image: url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=1920');">
+        <div class="bg-section-inner">
+            <div id="interiors">
+                <div class="section-header" style="color: #fff;">
+                    <span style="color: var(--primary-light);">Seating Styles</span>
+                    <h2 style="color: #fff;">Upholstery Options</h2>
+                </div>
+
+                <div class="interiors-grid scroll-reveal">
+                    <div class="interior-card-hover" onclick="openLightbox('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200')">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=600" alt="Standard Seats">
+                        <div class="interior-overlay">
+                            <h4>Standard & Sport Seat Covers</h4>
+                            <p>Durable fabric and leatherette seat covers custom-fitted to protect original factory seats while enhancing daily driving comfort.</p>
+                        </div>
+                    </div>
+                    <div class="interior-card-hover" onclick="openLightbox('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1200')">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=600" alt="Sofa Sets">
+                        <div class="interior-overlay">
+                            <h4>Living Room & Office Sofa Sets</h4>
+                            <p>Custom fabric and leather upholstery tailored for home lounge sets, office reception couches, and custom cushion designs.</p>
+                        </div>
+                    </div>
+                    <div class="interior-card-hover" onclick="openLightbox('https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&q=80&w=1200')">
+                        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&q=80&w=600" alt="Commercial Fleet">
+                        <div class="interior-overlay">
+                            <h4>Heavy-Duty Commercial Seating</h4>
+                            <p>Rugged, tear-resistant upholstery solutions built to withstand heavy daily use in commercial vans, pickups, and fleet vehicles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Materials Section -->
+    <section id="materials">
+        <div class="section-header">
+            <span>Quality Supplies</span>
+            <h2>Materials We Use</h2>
+        </div>
+
+        <div class="materials-grid scroll-reveal">
+            <div class="material-item-wrap">
+                <div class="material-title-header">Durable Leatherette & Vinyl</div>
+                <div class="material-card-hover" onclick="openLightbox('leather.jpg')">
+                    <img src="leather.jpg" alt="Leatherette">
+                    <div class="material-overlay">
+                        <h4>Durable Leatherette & Vinyl</h4>
+                        <p>Water-resistant, easy-to-wipe synthetic leather materials that offer a clean look and long-lasting durability for daily-driven cars and high-traffic furniture.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="material-item-wrap">
+                <div class="material-title-header">Automotive & Sofa Fabrics</div>
+                <div class="material-card-hover" onclick="openLightbox('soft fabric.jpg')">
+                    <img src="soft fabric.jpg" alt="Fabric">
+                    <div class="material-overlay">
+                        <h4>Automotive & Sofa Fabrics</h4>
+                        <p>Breathable, wear-resistant woven cloth and velvet materials matched closely to factory car interiors and modern living room decor.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="material-item-wrap">
+                <div class="material-title-header">Heavy-Duty Thread Lines</div>
+                <div class="material-card-hover" onclick="openLightbox('threads.jpg')">
+                    <img src="threads.jpg" alt="Thread">
+                    <div class="material-overlay">
+                        <h4>Heavy-Duty Thread Lines</h4>
+                        <p>Strong, weather-resistant nylon and poly threads used for secure stitching that holds firm against daily wear and tear.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Leader Dan Profile Section -->
+    <section id="leader">
+        <div class="section-header">
+            <span>Workshop Leadership</span>
+            <h2>Team Leader: Dan</h2>
+        </div>
+
+        <div class="leader-profile-box scroll-reveal">
+            <div class="leader-img-wrap">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" alt="Dan - Team Leader">
+            </div>
+            <div class="leader-content">
+                <h3>Dan</h3>
+                <span class="leader-title">Workshop Manager & Upholstery Specialist</span>
+                <p>Dan oversees all hands-on technical operations on the workshop floor, bringing years of practical experience in automotive upholstery repair, sofa restoration, seat rebuilding, and interior fitting.</p>
+                <p>Under his supervision, every vehicle and furniture piece entrusted to our team receives careful attention to ensure secure stitching, proper foam padding, and clean finishing.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Car Brands We Deal In Section -->
+    <section id="brands">
+        <div class="car-brands-section scroll-reveal">
+            <div class="section-header" style="margin-bottom: 1.5rem;">
+                <span>Universal Service</span>
+                <h2>Car Brands We Service</h2>
+            </div>
+            <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto; font-size: 1rem;">We provide reliable upholstery repairs, seat fixes, and washing services for all popular vehicle makes found on our roads.</p>
+
+            <div class="brands-interactive-container">
+                <div class="brand-list" id="brandList">
+                    <div class="brand-tab active" data-brand="toyota">
+                        <span>Toyota</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="brand-tab" data-brand="nissan">
+                        <span>Nissan</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="brand-tab" data-brand="subaru">
+                        <span>Subaru</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="brand-tab" data-brand="mazda">
+                        <span>Mazda</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="brand-tab" data-brand="volkswagen">
+                        <span>Volkswagen / Others</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <div class="brand-display-panel" id="brandDisplayPanel">
+                    <div class="brand-display-bg active" style="background-image: url('toyota.jpg');" data-panel="toyota"></div>
+                    <div class="brand-display-bg" style="background-image: url('nissan.jpg');" data-panel="nissan"></div>
+                    <div class="brand-display-bg" style="background-image: url('subaru.jpg');" data-panel="subaru"></div>
+                    <div class="brand-display-bg" style="background-image: url('mazda.jpg');" data-panel="mazda"></div>
+                    <div class="brand-display-bg" style="background-image: url('other cars.jpg');" data-panel="volkswagen"></div>
+
+                    <div class="brand-display-content" id="brandContentArea">
+                        <h3>Toyota</h3>
+                        <p>Routine seat re-trimming, torn fabric repairs, floor mat replacements, and full interior cleaning for popular models like Premio, Raum, Wish, Harrier, and Land Cruiser.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Others Section -->
+    <section id="others">
+        <div class="section-header">
+            <span>Additional Offerings</span>
+            <h2>Others & Specialty Services</h2>
+        </div>
+        <div class="content-block">
+            <h3>Specialized Custom Requests & Additional Care</h3>
+            <p>Beyond our standard automotive upholstery, sofa re-upholstering, and routine washing packages, Elite Stitch And Shine accommodates unique custom projects, specialized fabric sourcing, and tailored corporate fleet maintenance.</p>
+            <p>If you have a unique restoration requirement or a specific custom furniture design in mind, reach out to our team to discuss how we can bring your vision to life.</p>
+        </div>
+    </section>
+
+    <!-- Inquiry Request Area Section -->
+    <section id="inquiry" class="inquiry-middle-section">
+        <div class="inquiry-container scroll-reveal">
+            <h3>Quick Inquiry</h3>
+            <p>Need a car seat fixed, a sofa re-upholstered, or your car washed? Send us a quick note below and our team will get back to you promptly.</p>
+            <div class="inquiry-form">
+                <div class="input-group">
+                    <input type="text" id="inquiryInput" class="inquiry-input" placeholder="Enter your vehicle model, sofa type, name, or service needed..." />
+                </div>
+                <button type="button" class="btn-primary" style="width: 100%;" id="inquirySubmitBtn">Submit Inquiry</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section>
+        <div class="social-section scroll-reveal">
+            <div class="section-header" style="margin-bottom: 1.5rem;">
+                <span>Stay Connected</span>
+                <h2>Follow Us Online</h2>
+            </div>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Check out our latest workshop updates, completed car and sofa restorations, and wash specials on our social media pages.</p>
+            
+            <div class="social-grid">
+                <a href="https://facebook.com" target="_blank" rel="noopener" class="social-card">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="social-card">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://youtube.com" target="_blank" rel="noopener" class="social-card">
+                    <i class="fa-brands fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <span>Get In Touch</span>
+            <h2>Contact Us</h2>
+        </div>
+
+        <div class="contact-grid scroll-reveal">
+            <div class="contact-info-box">
+                <div class="contact-info-item">
+                    <h4>Direct Phone</h4>
+                    <p><a href="tel:+256776717026">+256 776 717 026</a></p>
+                </div>
+                <div class="contact-info-item">
+                    <h4>Workshop Location</h4>
+                    <p>2 Wabigalo Road, Kampala, Uganda</p>
+                </div>
+                <div class="contact-info-item">
+                    <h4>Email Address</h4>
+                    <p><a href="mailto:wekotojesse14@gmail.com">wekotojesse14@gmail.com</a></p>
+                </div>
+                <div class="contact-info-item">
+                    <h4>Supervision</h4>
+                    <p>Workshop & Sofas: Dan | Wash & Detailing: Jeremy</p>
+                </div>
+            </div>
+
+            
+            <form class="contact-form" id="contactForm" action="https://formsubmit.co/wekotojesse14@gmail.com" method="POST" />
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="Elite Stitch & Shine - New Contact Message">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="">
+                <input type="hidden" name="_cc" value="">
+                <input type="text" name="_honey" style="display:none">
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" placeholder="Your Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="service" class="form-control" placeholder="Vehicle Make / Sofa Type">
+                </div>
+                <div class="form-group">
+                    <textarea name="message" class="form-control" rows="4" placeholder="Describe your upholstery or wash request..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;" id="contactSubmitBtn">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="workshop-map-section scroll-reveal" style="width: 100%; padding: 20px 0; background-color: var(--bg-surface);">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 15px; text-align: center;">
+            <h3 style="margin-bottom: 15px; font-family: sans-serif; color: var(--text-primary);">Visit Our Workshop</h3>
+            <p style="margin-bottom: 20px; font-family: sans-serif; color: var(--text-muted); font-size: 14px;">
+                2 Wabigalo Road, Kampala, Uganda
+            </p>
+            <div style="position: relative; width: 100%; height: 400px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px var(--shadow-color, rgba(0,0,0,0.15));">
+                <iframe 
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.755283451676!2d32.59631117496551!3d0.3131000640428807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177bcbf39783c51f%3A0x8e5f1d07ec6ef325!2sWabigalo%2C%20Kampala%2C%20Uganda!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal Container -->
+    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+        <button class="lightbox-close" aria-label="Close Lightbox"><i class="fa-solid fa-xmark"></i></button>
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <img id="lightboxImg" src="" alt="Enlarged Workshop View">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Elite Stitch And Shine Kampala. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#support">Support</a>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="Back to Top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        // ===== THEME TOGGLE =====
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+
+        // ===== TOAST SYSTEM =====
+        function showToast(message, type = 'success') {
+            document.querySelectorAll('.form-toast').forEach(t => t.remove());
+            const toast = document.createElement('div');
+            toast.className = `form-toast ${type}`;
+            toast.innerHTML = `<i class="fa-solid fa-${type === 'success' ? 'circle-check' : 'circle-exclamation'}"></i> ${message}`;
+            document.body.appendChild(toast);
+            requestAnimationFrame(() => { toast.classList.add('show'); });
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            }, 4000);
+        }
+
+        // ===== MOBILE NAV WITH OVERLAY =====
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.querySelector('.nav-links');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+
+        function openMobileNav() {
+            navLinks.classList.add('active');
+            mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            const icon = menuToggle.querySelector('i');
+            icon.classList.replace('fa-bars', 'fa-xmark');
+        }
+
+        function closeMobileNav() {
+            navLinks.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            const icon = menuToggle.querySelector('i');
+            icon.classList.replace('fa-xmark', 'fa-bars');
+        }
+
+        menuToggle.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                closeMobileNav();
+            } else {
+                openMobileNav();
+            }
+        });
+
+        mobileOverlay.addEventListener('click', closeMobileNav);
+
+        // Close mobile nav on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', closeMobileNav);
+        });
+
+        // ===== NAV LINK RIPPLE EFFECT =====
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                ripple.classList.add('nav-ripple');
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // ===== SCROLL ACTIVE LINK =====
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 180) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') && item.getAttribute('href').includes(current)) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // ===== SCROLL REVEAL ANIMATION =====
+        const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        scrollRevealElements.forEach(el => revealObserver.observe(el));
+
+        // ===== CAROUSEL =====
+        const track = document.getElementById('carouselTrack');
+        const slides = Array.from(track.children);
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        let currentIndex = 0;
+
+        function updateCarousel(index) {
+            track.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel(currentIndex);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel(currentIndex);
+        });
+
+        // Touch swipe support for carousel
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const carouselContainer = track.parentElement;
+        carouselContainer.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        carouselContainer.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                } else {
+                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                }
+                updateCarousel(currentIndex);
+            }
+        }, { passive: true });
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel(currentIndex);
+        }, 5000);
+
+        // ===== BEFORE / AFTER SLIDER =====
+        const comparisonRange = document.getElementById('comparisonRange');
+        const comparisonAfterLayer = document.getElementById('comparisonAfterLayer');
+        const sliderLine = document.getElementById('sliderLine');
+
+        comparisonRange.addEventListener('input', (e) => {
+            const val = e.target.value;
+            comparisonAfterLayer.style.width = val + '%';
+            sliderLine.style.left = val + '%';
+        });
+
+        // ===== LIGHTBOX =====
+        const lightboxModal = document.getElementById('lightboxModal');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        function openLightbox(imgSrc) {
+            lightboxImg.src = imgSrc;
+            lightboxModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightboxModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // ===== CAR BRANDS CONFIGURATOR =====
+        const brandTabs = document.querySelectorAll('.brand-tab');
+        const brandBgs = document.querySelectorAll('.brand-display-bg');
+        const brandContentArea = document.getElementById('brandContentArea');
+
+        const brandData = {
+            toyota: {
+                title: "Toyota",
+                desc: "Routine seat re-trimming, torn fabric repairs, floor mat replacements, and full interior cleaning for popular models like Premio, Raum, Wish, Harrier, and Land Cruiser."
+            },
+            nissan: {
+                title: "Nissan",
+                desc: "Cabin vacuuming, dashboard cleaning, foam padding adjustments, and durable seat cover installations for models like Dualis, X-Trail, and Note."
+            },
+            subaru: {
+                title: "Subaru",
+                desc: "Sport seat bolstering, steering wheel leather wrapping, and comprehensive interior detailing tailored for Forester, Impreza, and Outback models."
+            },
+            mazda: {
+                title: "Mazda",
+                desc: "Interior restoration, headliner fabric replacement, and stain removal cleaning for Mazda Demio, Axela, and CX-5 vehicles."
+            },
+            volkswagen: {
+                title: "Volkswagen / Others",
+                desc: "Precision stitching, German thread repairs, roof lining fixes, and general cabin care for European and multi-brand utility vehicles."
+            }
+        };
+
+        brandTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                brandTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const brandKey = tab.getAttribute('data-brand');
+                brandBgs.forEach(bg => {
+                    bg.classList.remove('active');
+                    if (bg.getAttribute('data-panel') === brandKey) bg.classList.add('active');
+                });
+                const data = brandData[brandKey];
+                brandContentArea.style.opacity = 0;
+                setTimeout(() => {
+                    brandContentArea.innerHTML = `<h3>${data.title}</h3><p>${data.desc}</p>`;
+                    brandContentArea.style.opacity = 1;
+                }, 200);
+            });
+        });
+
+        // ===== BACK TO TOP =====
+        const backToTopButtons = document.querySelectorAll('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            backToTopButtons.forEach(btn => {
+                btn.classList.toggle('visible', window.pageYOffset > 500);
+            });
+        });
+
+        backToTopButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // ===== CONTACT FORM - FORMSUBMIT.CO =====
+        const contactForm = document.getElementById('contactForm');
+        const contactSubmitBtn = document.getElementById('contactSubmitBtn');
+
+        if (contactForm) {
+            // Set the _next field to current page (so user returns here after submit)
+            const nextField = contactForm.querySelector('input[name="_next"]');
+            if (nextField) nextField.value = window.location.href;
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const originalText = contactSubmitBtn.innerHTML;
+                contactSubmitBtn.innerHTML = '<span class="btn-spinner"></span> Sending...';
+                contactSubmitBtn.disabled = true;
+                contactSubmitBtn.style.opacity = '0.8';
+
+                const formData = new FormData(contactForm);
+
+                fetch('https://formsubmit.co/ajax/wekotojesse14@gmail.com', {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    showToast('Message sent successfully! We\'ll contact you soon.', 'success');
+                    contactSubmitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Sent!';
+                    contactSubmitBtn.style.opacity = '1';
+                    contactForm.reset();
+                    setTimeout(() => {
+                        contactSubmitBtn.innerHTML = originalText;
+                        contactSubmitBtn.disabled = false;
+                    }, 3000);
+                })
+                .catch(err => {
+                    console.error('FormSubmit Error:', err);
+                    showToast('Failed to send. Please call or WhatsApp us directly.', 'error');
+                    contactSubmitBtn.innerHTML = originalText;
+                    contactSubmitBtn.disabled = false;
+                    contactSubmitBtn.style.opacity = '1';
+                });
+            });
+        }
+
+        // ===== INQUIRY FORM - FORMSUBMIT.CO (via fetch) =====
+        const inquiryInput = document.getElementById('inquiryInput');
+        const inquirySubmitBtn = document.getElementById('inquirySubmitBtn');
+
+        if (inquirySubmitBtn) {
+            inquirySubmitBtn.addEventListener('click', function() {
+                const inquiryText = inquiryInput.value.trim();
+                if (!inquiryText) {
+                    showToast('Please enter your inquiry before submitting.', 'error');
+                    inquiryInput.focus();
+                    return;
+                }
+
+                const originalText = inquirySubmitBtn.innerHTML;
+                inquirySubmitBtn.innerHTML = '<span class="btn-spinner"></span> Sending...';
+                inquirySubmitBtn.disabled = true;
+                inquirySubmitBtn.style.opacity = '0.8';
+
+                const formData = new FormData();
+                formData.append('name', 'Quick Inquiry');
+                formData.append('phone', 'N/A');
+                formData.append('service', 'Quick Inquiry');
+                formData.append('message', inquiryText);
+                formData.append('_subject', 'Elite Stitch & Shine - Quick Inquiry');
+                formData.append('_captcha', 'false');
+                formData.append('_template', 'table');
+                formData.append('_honey', '');
+
+                fetch('https://formsubmit.co/ajax/wekotojesse14@gmail.com', {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    showToast('Inquiry sent! We\'ll respond shortly.', 'success');
+                    inquirySubmitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Sent!';
+                    inquirySubmitBtn.style.opacity = '1';
+                    inquiryInput.value = '';
+                    setTimeout(() => {
+                        inquirySubmitBtn.innerHTML = originalText;
+                        inquirySubmitBtn.disabled = false;
+                    }, 3000);
+                })
+                .catch(err => {
+                    console.error('FormSubmit Error:', err);
+                    showToast('Failed to send. Please try WhatsApp or call us.', 'error');
+                    inquirySubmitBtn.innerHTML = originalText;
+                    inquirySubmitBtn.disabled = false;
+                    inquirySubmitBtn.style.opacity = '1';
+                });
+            });
+        }
+
+        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ===== PAGE TRANSITION FADE-IN =====
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const overlay = document.getElementById('pageTransition');
+                if (overlay) overlay.classList.add('loaded');
+                setTimeout(() => overlay && overlay.remove(), 600);
+            }, 100);
+        });
+
+        // ===== HERO FLOATING PARTICLES =====
+        (function createParticles() {
+            const container = document.getElementById('heroParticles');
+            if (!container) return;
+            const particleCount = window.innerWidth < 768 ? 12 : 25;
+            for (let i = 0; i < particleCount; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random() * 4 + 2;
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.bottom = '-10px';
+                p.style.animationDuration = (Math.random() * 6 + 4) + 's';
+                p.style.animationDelay = (Math.random() * 5) + 's';
+                container.appendChild(p);
+            }
+        })();
+
+        // ===== TILT EFFECT ON SERVICE CARDS (desktop only) =====
+        if (window.innerWidth > 968) {
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / centerY * -3;
+                    const rotateY = (x - centerX) / centerX * 3;
+                    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
+            });
+        }
+    </script>
+</body>
+</html>

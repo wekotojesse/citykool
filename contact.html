@@ -1,0 +1,1188 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo tab.jpg">
+    <title>Contact Us - City Kool Integrated Solutions</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        :root {
+            --primary-color: #0A192F;
+            --primary: #0A192F;
+            --secondary: #1E3A8A;
+            --secondary-color: #3967e6;
+            --secondary-accent: #3967e6;
+            --accent-color: #0284C7;
+            --text-dark: #1E293B;
+            --text-light: #64748B;
+            --bg-light: #F8FAFC;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --transition-speed: 0.4s;
+        }
+
+        body.dark-mode {
+            --primary-color: #0F172A;
+            --secondary-color: #1E293B;
+            --secondary-accent: #60A5FA;
+            --accent-color: #38BDF8;
+            --text-dark: #F1F5F9;
+            --text-light: #e4e6ea;
+            --bg-light: #0B0F19;
+            --white: #0B132B;
+            --border-color: #334155;
+            --card-bg: #1E293B;
+            --bg-subtle: #090D16;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            opacity: 0;
+            line-height: 1.6;
+            font-weight: 400;
+            animation: fadeIn var(--transition-speed) ease-in-out forwards;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(10px); }
+        }
+
+        /* Navigation with Centered Container Support & Logo Styling */
+        header { background: var(--white); box-shadow: 0 4px 20px rgba(2,40,89,0.06); position: sticky; top: 0; z-index: 1000; width: 100%; transition: background-color 0.3s ease; }
+        nav { max-width: 1250px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; position: relative; width: 100%; }
+        
+        /* Seamless Logo Styling */
+        nav a.logo { display: flex; align-items: center; text-decoration: none; }
+        nav a.logo img { height: 80px; width: auto; object-fit: contain; display: block; }
+
+        .nav-right-group {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 0.95rem; transition: color 0.3s, transform 0.2s; position: relative; overflow: hidden; }
+
+        /* Animated underline on hover */
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-accent);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Active page has persistent underline */
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* Scale hover / press */
+        nav ul li a:hover {
+            color: var(--secondary-accent);
+            transform: scale(1.05);
+        }
+
+        nav ul li a:active {
+            transform: scale(0.97);
+        }
+
+        /* Ripple effect */
+        .nav-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(57, 103, 230, 0.2);
+            transform: scale(0);
+            animation: rippleAnim 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        body.dark-mode .nav-ripple {
+            background: rgba(56, 189, 248, 0.2);
+        }
+
+        @keyframes rippleAnim {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Dropdown arrow rotation */
+        .dropdown-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li.dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        nav ul li a.active { 
+            color: var(--secondary-accent); 
+            font-weight: 600;
+        }
+        
+        nav ul li a:hover { 
+            color: var(--secondary-accent); 
+        }
+        
+        .btn-quote { background: linear-gradient(150deg, var(--secondary-accent), var(--accent-color)); color: #ffffff !important; padding: 0.65rem 1.4rem; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: 600; box-shadow: 0 4px 12px rgba(0,119,182,0.2); transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; }
+        .btn-quote:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,119,182,0.3); }
+
+        /* Theme Toggle Button Styling */
+        .theme-toggle-btn {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--text-dark);
+            color: var(--text-dark);
+        }
+
+        /* Dropdown Styling */
+        nav ul li.dropdown {
+            position: relative;
+        }
+
+        nav ul li.dropdown .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            box-shadow: 0 10px 25px rgba(2,40,89,0.1);
+            border-radius: 8px;
+            padding: 0.75rem 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1200;
+        }
+
+        nav ul li.dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        nav ul li.dropdown .dropdown-menu li {
+            width: 100%;
+        }
+
+        nav ul li.dropdown .dropdown-menu li a {
+            padding: 0.6rem 1.2rem;
+            display: block;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav ul li.dropdown .dropdown-menu li a::after {
+            display: none;
+        }
+
+        nav ul li.dropdown .dropdown-menu li a:hover {
+            background: var(--bg-subtle);
+            padding-left: 1.5rem;
+            transform: none;
+            font-weight: 500;
+        }
+
+        /* Burger Menu Toggle Button */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+            position: relative;
+        }
+        .burger-menu span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--text-dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            position: absolute;
+            left: 0;
+        }
+        .burger-menu span:nth-child(1) {
+            top: 0;
+        }
+        .burger-menu span:nth-child(2) {
+            top: 9px;
+        }
+        .burger-menu span:nth-child(3) {
+            top: 18px;
+        }
+
+        /* X animation when burger is active */
+        .burger-menu.active span:nth-child(1) {
+            top: 9px;
+            transform: rotate(45deg);
+        }
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .burger-menu.active span:nth-child(3) {
+            top: 9px;
+            transform: rotate(-45deg);
+        }
+
+        .theme-toggle-mobile {
+            display: none;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle-mobile:hover {
+            border-color: var(--text-dark);
+            color: var(--text-dark);
+        }
+
+        .nav-controls {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Page Banner */
+        .contact-hero {
+            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(30, 58, 138, 0.85)), url('contact us.jpg') no-repeat center center/cover;
+            color: #ffffff;
+            text-align: center;
+            padding: 7rem 2rem 5rem;
+            width: 100%;
+        }
+        .contact-hero-inner {
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+        .contact-hero h1 { font-size: 3rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 1.2rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .contact-hero p { font-size: 1.15rem; font-weight: 400; max-width: 650px; margin: 0 auto; color: #94A3B8; line-height: 1.6; }
+
+        /* Contact Section Layout Container */
+        .contact-wrapper {
+            max-width: 1250px;
+            margin: -3rem auto 5rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .contact-container { 
+            display: grid; 
+            grid-template-columns: 1fr 1.2fr; 
+            gap: 0; 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06); 
+            border: 1px solid var(--border-color);
+            overflow: hidden; 
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .contact-info { 
+            background: var(--primary-color); 
+            color: #ffffff; 
+            padding: 3.5rem 3rem; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-info h2 { font-size: 1.8rem; margin-bottom: 1rem; font-weight: 700; }
+        .contact-info > p { color: #94A3B8; margin-bottom: 2.5rem; line-height: 1.6; font-size: 0.95rem; }
+        
+        .info-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-item { 
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+            border-radius: 6px;
+            padding: 6px;
+        }
+
+        .info-item:hover {
+            transform: translateX(4px);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .info-item i {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-top: 0.2rem;
+        }
+
+        .info-item div strong { display: block; font-size: 0.9rem; color: #ffffff; text-transform: uppercase; margin-bottom: 0.2rem; letter-spacing: 0.5px; font-weight: 600; }
+        .info-item div span { font-size: 0.95rem; color: #94A3B8; line-height: 1.5; }
+
+        .contact-form { 
+            padding: 3.5rem; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            background: var(--card-bg);
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form h3 { color: var(--text-dark); margin-bottom: 1.5rem; font-size: 1.6rem; font-weight: 700; }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.95rem; background: var(--bg-light); color: var(--text-dark); transition: border-color 0.2s, box-shadow 0.2s, background-color 0.3s ease; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--secondary-accent); box-shadow: 0 0 0 3px rgba(57, 103, 230, 0.15); }
+        .form-group textarea { resize: vertical; height: 120px; }
+        
+        .btn-submit { background: linear-gradient(150deg, var(--secondary-accent), var(--accent-color)); color: #ffffff; border: none; padding: 0.85rem 1.5rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-size: 1rem; width: 100%; box-shadow: 0 4px 12px rgba(0,119,182,0.2); }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,119,182,0.3); }
+
+        /* Map Section */
+        .map-section {
+            max-width: 1250px; 
+            margin: 0 auto 5rem; 
+            padding: 0 2rem;
+        }
+        .map-container {
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06); 
+            border: 1px solid var(--border-color); 
+            overflow: hidden; 
+            padding: 1.5rem;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .map-container h3 {
+            color: var(--text-dark); 
+            margin-bottom: 0.5rem; 
+            font-size: 1.4rem; 
+            font-weight: 700;
+        }
+        .map-container p {
+            color: var(--text-light); 
+            margin-bottom: 1.5rem; 
+            font-size: 0.95rem;
+        }
+
+        /* Toast notification for interactivity */
+        .toast-notification {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 0.85rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            font-size: 0.95rem;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            z-index: 3000;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            max-width: 360px;
+        }
+        .toast-notification.success {
+            background: #059669;
+            color: #fff;
+        }
+        .toast-notification.error {
+            background: #DC2626;
+            color: #fff;
+        }
+        .toast-notification.info {
+            background: var(--secondary-accent);
+            color: #fff;
+        }
+        .toast-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Legacy copy-toast kept for clipboard */
+        .copy-toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--secondary-accent);
+            color: #fff;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 3000;
+            pointer-events: none;
+        }
+        .copy-toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Spinner for submit button */
+        .btn-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            vertical-align: middle;
+            margin-right: 0.4rem;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            padding: 5rem 2rem 2rem;
+            border-top: 4px solid var(--secondary-accent);
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p {
+            color: #94A3B8;
+            margin-top: 1rem;
+            max-width: 340px;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        }
+
+        .social-icon:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            font-size: 1.15rem; margin-bottom: 1.4rem; font-weight: 700; letter-spacing: 0.5px; color: var(--text-white); position: relative;
+        }
+        .footer-col h4::after {
+            content: ''; position: absolute; left: 0; bottom: -6px; width: 30px; height: 2px; background: var(--accent-color);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col ul li a {
+            color: #E2E8F0;
+            text-decoration: none;
+            transition: color 0.2s ease, padding-left 0.2s ease;
+            font-size: 0.95rem;
+            display: inline-block;
+        }
+
+        .footer-col ul li a:hover {
+            color: #3967e6;
+            padding-left: 5px;
+        }
+
+        .footer-newsletter p {
+            color: #94A3B8;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .newsletter-input {
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            color: #FFFFFF;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .newsletter-input::placeholder {
+            color: #64748B;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--accent);
+        }
+
+        .newsletter-btn {
+            background-color: var(--accent-color);
+            color: #FFFFFF;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .newsletter-btn:hover {
+            background-color: #02699f;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #64748B;
+            font-size: 0.85rem;
+        }
+
+        .footer-legal-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-legal-links a {
+            color: #64748B;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-legal-links a:hover {
+            color: #FFFFFF;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .contact-hero h1 {
+                font-size: 2.25rem;
+            }
+            .burger-menu {
+                display: flex;
+            }
+            .nav-controls {
+                display: flex;
+            }
+            .theme-toggle-mobile {
+                display: flex;
+            }
+            .nav-right-group .theme-toggle-btn {
+                display: none;
+            }
+            .nav-right-group {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                border-bottom: 1px solid var(--border-color);
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+            .nav-right-group.active {
+                display: flex;
+            }
+            #navLinks {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                width: 100%;
+            }
+            .btn-quote {
+                width: 100%;
+                text-align: center;
+            }
+            .dropdown-menu {
+                position: static !important;
+                box-shadow: none !important;
+                border: none !important;
+                background: transparent !important;
+                padding-left: 1rem !important;
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+            }
+            .dropdown-menu li a {
+                font-size: 0.85rem;
+                color: var(--text-light);
+                overflow: hidden;
+            }
+            .dropdown-menu li a::after { display: none; }
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav { padding: 0.8rem 1rem; }
+            nav a.logo img { height: 55px; }
+            .contact-hero { padding: 3.5rem 1rem; }
+            .contact-wrapper { padding: 0 1rem; margin-top: -1.5rem; }
+            .contact-info, .contact-form { padding: 2.5rem 1.5rem; }
+            .footer-container { grid-template-columns: 1fr; gap: 2.5rem; }
+            .footer-bottom { flex-direction: column; text-align: center; justify-content: center; gap: 1rem; }
+        }
+
+    
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="citykool logo.png" alt="City Kool Integrated Solutions Logo">
+            </a>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle-mobile" id="themeToggleMobile" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <button class="burger-menu" id="burgerBtn" aria-label="Toggle Navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+            <div class="nav-right-group" id="navRightGroup">
+                <ul id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="regions.html" class="dropdown-toggle">Regional Branches <span class="dropdown-arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="regions.html#nairobi">Nairobi (HQ)</a></li>
+                            <li><a href="upholstery.html">ELITE STITCH & SHINE</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="contact.html" class="btn-quote">Get A Quote</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Banner -->
+        <section class="contact-hero">
+            <div class="contact-hero-inner">
+                <h1>Get In Touch With Us</h1>
+                <p>Let's collaborate on your next infrastructure or installation milestone across East Africa.</p>
+            </div>
+        </section>
+
+        <!-- Contact Form & Info Grid Wrapper -->
+        <div class="contact-wrapper">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div>
+                        <h2>Contact Information</h2>
+                        <p>Whether you're planning a large-scale infrastructure project or need expert support, our technical teams are ready to help.</p>
+                        
+                        <div class="info-group">
+                            <div class="info-item" title="Click to copy address">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div>
+                                    <strong>Office Location</strong>
+                                    <span>Plot 19 Wabigalo Road, Namuwongo</span>
+                                </div>
+                            </div>
+                            <div class="info-item" title="Click to copy phone numbers">
+                                <i class="fa-solid fa-phone"></i>
+                                <div>
+                                    <strong>Phone Numbers</strong>
+                                    <span>+256 772 968266 / +256 776 717026</span>
+                                </div>
+                            </div>
+                            <div class="info-item" title="Click to copy emails">
+                                <i class="fa-solid fa-envelope"></i>
+                                <div>
+                                    <strong>Email Addresses</strong>
+                                    <span>info@citykool.com<br>citykoolintegrated@gmail.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Leave a Message</h3>
+                    <form id="contactForm" action="https://formsubmit.co/wekotojesse14@gmail.com" method="POST">
+                        <!-- FormSubmit.co hidden fields -->
+                        <input type="hidden" name="_subject" value="City Kool - New Contact Message">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number / Email</label>
+                            <input type="text" name="contact" placeholder="Enter phone number or email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea name="message" placeholder="Describe your project requirements..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit" id="contactSubmitBtn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+ 
+</div>
+        <!-- Location Map Section -->
+        <section class="map-section">
+            <div class="map-container">
+                <h3>Our Location</h3>
+                <p>Find us at 2nd Wabigalo Rd, Namuwongo.</p>
+                <div style="width: 100%; height: 400px; border-radius: 8px; overflow: hidden;">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7582623848944!2d32.59944927311664!3d0.31437419968254965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbc75078bfcc7%3A0x49bf1468aee4db22!2s2%20Wabigalo%20Rd%2C%20Kampala%2C%20Uganda!5e0!3m2!1sen!2ske!4v1788619987967!5m2!1sen!2ske" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo" style="margin-bottom: 0.5rem; display: inline-block;">
+                    <img src="citykool logo.png" alt="City Kool Integrated Solutions Logo" style="height: 45px;">
+                </a>
+                <p>Delivering premier engineering infrastructure, electrical grid setups, civil works, and climate control technology across East Africa.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
+                    <a href="#" class="social-icon" aria-label="X / Twitter">𝕏</a>
+                    <a href="#" class="social-icon" aria-label="YouTube">▶</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="projects.html">Project Portfolio</a></li>
+                    <li><a href="regions.html">Regional Branches</a></li>
+                    <li><a href="upholstery.html">Upholstery</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Core Divisions</h4>
+                <ul>
+                    <li><a href="services.html">Refrigeration & HVAC</a></li>
+                    <li><a href="services.html">Civil Engineering & Roads</a></li>
+                    <li><a href="services.html">Electrical Installations</a></li>
+                    <li><a href="services.html">Facility Maintenance</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to get technical insights, company updates, and project highlights.</p>
+                <form class="newsletter-form" id="newsletterForm" action="https://formsubmit.co/wekotojesse14@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="City Kool - Newsletter Subscription">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="">
+                    <input type="text" name="name" value="Newsletter Subscriber" style="display:none;">
+                    <input type="email" name="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-btn" id="newsletterSubmitBtn">Subscribe Now</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Copyright © 2026 Citykool Integrated Solutions Ltd. All Rights Reserved.</p>
+            <div class="footer-legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for High Interactivity -->
+    <script>
+        // Burger menu toggle functionality
+        const burgerBtn = document.getElementById('burgerBtn');
+        const navRightGroup = document.getElementById('navRightGroup');
+
+        if (burgerBtn && navRightGroup) {
+            burgerBtn.addEventListener('click', () => {
+                burgerBtn.classList.toggle('active');
+                navRightGroup.classList.toggle('active');
+            });
+        }
+
+        // Dark Mode Functionality
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeToggleMobile = document.getElementById('themeToggleMobile');
+        const savedTheme = localStorage.getItem('theme');
+
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            if (themeToggleBtn) {
+                const themeIcon = themeToggleBtn.querySelector('i');
+                if (themeIcon) {
+                    const newIcon = isDark ? 'fa-sun' : 'fa-moon';
+                    const oldIcon = isDark ? 'fa-moon' : 'fa-sun';
+                    themeIcon.classList.replace(oldIcon, newIcon);
+                }
+            }
+            if (themeToggleMobile) {
+                const themeIconMobile = themeToggleMobile.querySelector('i');
+                if (themeIconMobile) {
+                    const newIcon = isDark ? 'fa-sun' : 'fa-moon';
+                    const oldIcon = isDark ? 'fa-moon' : 'fa-sun';
+                    themeIconMobile.classList.replace(oldIcon, newIcon);
+                }
+            }
+        }
+
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', toggleDarkMode);
+        }
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', toggleDarkMode);
+        }
+
+        // Interactive copy-to-clipboard for contact info items
+        const infoItems = document.querySelectorAll('.info-item');
+        const toast = document.createElement('div');
+        toast.className = 'copy-toast';
+        toast.textContent = 'Copied info to clipboard!';
+        document.body.appendChild(toast);
+
+        infoItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const textToCopy = item.querySelector('span').innerText;
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    toast.classList.add('show');
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 2000);
+                });
+            });
+        });
+
+        // ===== SHOW TOAST NOTIFICATION =====
+        function showToast(message, type = 'success') {
+            const existing = document.querySelector('.toast-notification');
+            if (existing) existing.remove();
+
+            const toast = document.createElement('div');
+            toast.className = `toast-notification ${type}`;
+            const icon = type === 'success' ? 'circle-check' : type === 'error' ? 'circle-exclamation' : 'circle-info';
+            toast.innerHTML = `<i class="fa-solid fa-${icon}"></i> ${message}`;
+            document.body.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    toast.classList.add('show');
+                });
+            });
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            }, 3500);
+        }
+
+        // ===== CONTACT FORM - FORMSUBMIT.CO (via fetch) =====
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            // Set the _next field to current page
+            const nextField = contactForm.querySelector('input[name="_next"]');
+            if (nextField) {
+                nextField.value = window.location.href;
+            }
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const submitBtn = document.getElementById('contactSubmitBtn');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.style.opacity = '0.8';
+                submitBtn.disabled = true;
+
+                const formData = new FormData(contactForm);
+
+                fetch('https://formsubmit.co/ajax/wekotojesse14@gmail.com', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Network error: ' + response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    if (!data.success) throw new Error(data.message || 'FormSubmit returned success:false');
+                    showToast('Message sent successfully! We\'ll contact you soon.', 'success');
+                    contactForm.reset();
+                    submitBtn.textContent = 'Sent!';
+                    submitBtn.style.background = '#10B981';
+                    submitBtn.style.opacity = '1';
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                    }, 3000);
+                })
+                .catch(error => {
+                    console.error('Contact form error:', error);
+                    showToast('Failed to send. Please call or email us directly.', 'error');
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.opacity = '1';
+                    submitBtn.disabled = false;
+                });
+            });
+        }
+
+        // ===== NEWSLETTER FORM - FORMSUBMIT.CO (via fetch) =====
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            // Set the _next field to current page
+            const nextField = newsletterForm.querySelector('input[name="_next"]');
+            if (nextField) {
+                nextField.value = window.location.href;
+            }
+
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const submitBtn = document.getElementById('newsletterSubmitBtn');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Subscribing...';
+                submitBtn.style.opacity = '0.8';
+                submitBtn.disabled = true;
+
+                const formData = new FormData(newsletterForm);
+
+                fetch('https://formsubmit.co/wekotojesse14@gmail.com', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Network error: ' + response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    if (!data.success) throw new Error(data.message || 'FormSubmit returned success:false');
+                    showToast('Subscribed successfully! Welcome aboard.', 'success');
+                    newsletterForm.reset();
+                    submitBtn.textContent = 'Subscribed!';
+                    submitBtn.style.background = '#10B981';
+                    submitBtn.style.opacity = '1';
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                    }, 3000);
+                })
+                .catch(error => {
+                    console.error('Newsletter form error:', error);
+                    showToast('Failed to subscribe. Please try again.', 'error');
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.opacity = '1';
+                    submitBtn.disabled = false;
+                });
+            });
+        }
+
+        // Nav link ripple effect
+        const navLinks = document.querySelectorAll('#navLinks li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                ripple.classList.add('nav-ripple');
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Dropdown arrow rotation on click (mobile)
+        document.querySelectorAll('nav ul li.dropdown').forEach(item => {
+            const arrow = item.querySelector('.dropdown-arrow');
+            if (arrow) {
+                item.addEventListener('click', () => {
+                    arrow.style.transform = arrow.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+                });
+            }
+        });
+
+        // Auto-highlight active page
+        const currentPage = window.location.pathname.split('/').pop() || 'contact.html';
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPage) {
+                link.classList.add('active');
+            }
+        });
+
+        // Close mobile menu on link click
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                burgerBtn.classList.remove('active');
+                navRightGroup.classList.remove('active');
+            });
+        });
+
+        // Page Transition Handler[cite: 5]
+        document.addEventListener("click", e => {
+            const anchor = e.target.closest("a");
+            if (anchor && anchor.href && anchor.href.startsWith(window.location.origin) && !anchor.getAttribute('target')) {
+                e.preventDefault();
+                document.body.style.opacity = 0;
+                setTimeout(() => {
+                    window.location.href = anchor.href;
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

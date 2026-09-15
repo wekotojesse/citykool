@@ -1,0 +1,1664 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo tab.jpg">
+    <title>About Us | CityKool Integrated Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0A192F;
+            --secondary: #1E3A8A;
+            --secondary-color: #1e3e62;
+            --accent: #0284C7;
+            --accent-color: #008DDA;
+            --text-main: #334155;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+            --bg-subtle: #F8FAFC;
+            --bg-light: #F8FAFC;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --header-bg: #FFFFFF;
+            --footer-bg: #0A192F;
+            --card-bg: #FFFFFF;
+        }
+
+        [data-theme="dark"] {
+            --primary: #0A192F;
+            --secondary: #38BDF8;
+            --secondary-color: #38BDF8;
+            --accent: #38BDF8;
+            --accent-color: #38BDF8;
+            --text-main: #94A3B8;
+            --text-dark: #F1F5F9;
+            --text-muted: #94A3B8;
+            --bg-subtle: #090D16;
+            --bg-light: #0B132B;
+            --white: #0B132B;
+            --border-color: #1E293B;
+            --header-bg: #0B132B;
+            --footer-bg: #070B14;
+            --card-bg: #05296c;
+        }
+
+        [data-theme="dark"] .nav-ripple {
+            background: rgba(56, 189, 248, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-subtle);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation Styles */
+        header { 
+            background: var(--header-bg); 
+            box-shadow: 0 4px 20px rgba(2,40,89,0.06); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+
+        nav { 
+            max-width: 1250px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 1rem 2rem; 
+            position: relative; 
+        }
+        
+        nav a.logo { 
+            display: flex; 
+            align-items: center; 
+            text-decoration: none; 
+        }
+
+        nav a.logo img { 
+            height: 80px; 
+            width: auto; 
+            object-fit: contain; 
+            display: block; 
+        }
+
+        .nav-right-group {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 2rem; 
+            align-items: center; 
+        }
+
+        nav ul li a { 
+            text-decoration: none; 
+            color: var(--text-dark); 
+            font-weight: 500; 
+            font-size: 0.95rem; 
+            position: relative;
+            padding: 0.3rem 0;
+            transition: color 0.3s, transform 0.2s; 
+            overflow: hidden;
+        }
+
+        /* Animated underline slides in from left on hover */
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Active page has persistent underline */
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover, nav ul li a.active { 
+            color: var(--accent-color); 
+        }
+
+        /* Subtle scale on hover */
+        nav ul li a:hover {
+            transform: scale(1.05);
+        }
+
+        nav ul li a:active {
+            transform: scale(0.97);
+        }
+
+        /* Ripple effect for nav links */
+        .nav-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 141, 218, 0.25);
+            transform: scale(0);
+            animation: rippleAnim 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes rippleAnim {
+            to {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+
+        /* Dropdown arrow rotation */
+        .dropdown-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 0.8em;
+        }
+
+        nav ul li.dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        .btn-quote { 
+            background: linear-gradient(150deg, var(--secondary-color), var(--accent-color)); 
+            color: #FFFFFF !important; 
+            padding: 0.65rem 1.4rem; 
+            border-radius: 6px; 
+            text-decoration: none; 
+            font-size: 0.9rem; 
+            font-weight: 600; 
+            box-shadow: 0 4px 12px rgba(0,119,182,0.2); 
+            transition: transform 0.2s, box-shadow 0.2s; 
+            white-space: nowrap;
+        }
+
+        .btn-quote:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 16px rgba(0,119,182,0.3); 
+        }
+
+        .theme-toggle-btn {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--text-dark);
+            color: var(--text-dark);
+        }
+
+        /* Dropdown Styling */
+        nav ul li.dropdown {
+            position: relative;
+        }
+
+        nav ul li.dropdown .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            box-shadow: 0 10px 25px rgba(2,40,89,0.1);
+            border-radius: 8px;
+            padding: 0.75rem 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1200;
+            border: 1px solid var(--border-color);
+        }
+
+        nav ul li.dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        nav ul li.dropdown .dropdown-menu li {
+            width: 100%;
+        }
+
+        nav ul li.dropdown .dropdown-menu li a {
+            padding: 0.6rem 1.2rem;
+            display: block;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav ul li.dropdown .dropdown-menu li a:hover {
+            background: var(--bg-subtle);
+            color: var(--accent-color);
+            padding-left: 1.5rem;
+            transform: none;
+        }
+
+        nav ul li.dropdown .dropdown-menu li a::after {
+            display: none;
+        }
+
+        .burger-menu {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            position: relative;
+            width: 25px;
+            height: 21px;
+        }
+
+        .burger-menu span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: all 0.3s;
+            position: absolute;
+            left: 0;
+        }
+
+        .burger-menu span:nth-child(1) {
+            top: 0;
+        }
+
+        .burger-menu span:nth-child(2) {
+            top: 9px;
+        }
+
+        .burger-menu span:nth-child(3) {
+            top: 18px;
+        }
+
+        /* X animation when burger is active */
+        .burger-menu.active span:nth-child(1) {
+            top: 9px;
+            transform: rotate(45deg);
+        }
+
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active span:nth-child(3) {
+            top: 9px;
+            transform: rotate(-45deg);
+        }
+
+        /* Theme toggle responsive positioning */
+        .theme-toggle-btn {
+            display: flex;
+        }
+
+        .nav-controls {
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .theme-toggle-mobile {
+            display: none;
+        }
+
+        /* Hero Section with Background Image */
+        .hero-section {
+            position: relative;
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.9) 0%, rgba(30, 58, 138, 0.85) 100%), 
+                        url('about.jpg') no-repeat center center/cover;
+            color: #FFFFFF;
+            padding: 7rem 2rem 5rem;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(2, 132, 199, 0.15);
+            border: 1px solid var(--accent);
+            color: #38BDF8;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 1.2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-section p {
+            font-size: 1.15rem;
+            color: #94A3B8;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Overview Section */
+        .overview-section {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .overview-content h2 {
+            font-size: 2.25rem;
+            color: var(--text-dark);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .overview-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .hq-highlight {
+            background: var(--white);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+            border-left-width: 4px;
+            margin-top: 2rem;
+        }
+
+        .hq-highlight h4 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+        }
+
+        .hq-highlight p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .overview-visual {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .overview-visual img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Roulette / Counter Section */
+        .roulette-section {
+            background: var(--primary);
+            color: #FFFFFF;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .roulette-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .roulette-item h3 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .roulette-item p {
+            font-size: 1.05rem;
+            color: #94A3B8;
+            font-weight: 500;
+        }
+
+        /* Interactive Mission & Vision Section */
+        .interactive-mv {
+            background-color: var(--white);
+            padding: 6rem 2rem;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .interactive-mv-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .mv-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .mv-tab-btn {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            padding: 0.85rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mv-tab-btn.active {
+            background: var(--secondary);
+            color: #FFFFFF;
+            border-color: var(--secondary);
+            box-shadow: 0 8px 20px rgba(30,58,138,0.2);
+        }
+
+        .mv-content-box {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            padding: 3.5rem;
+            border-radius: 16px;
+            display: none;
+            animation: fadeInTab 0.4s ease forwards;
+        }
+
+        .mv-content-box.active {
+            display: block;
+        }
+
+        @keyframes fadeInTab {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .mv-content-box h3 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .mv-content-box p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Core Principles Carousel Section */
+        .principles-section {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .carousel-outer {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+
+        .principles-track {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .principle-card {
+            min-width: calc(33.333% - 1.35rem);
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            border-top: 4px solid var(--accent);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(2, 40, 89, 0.08);
+        }
+
+        .principle-card h3 {
+            color: var(--text-dark);
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .principle-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+
+        .carousel-btn:hover {
+            background: var(--secondary);
+            color: #FFFFFF;
+            border-color: var(--secondary);
+        }
+
+        /* Image Showcase Carousel Below */
+        .showcase-carousel-section {
+            background: var(--white);
+            padding: 6rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .showcase-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            margin-top: 3rem;
+            cursor: pointer;
+        }
+
+        .showcase-wrapper::before,
+        .showcase-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 0; width: 120px; height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .showcase-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--white), rgba(255, 255, 255, 0));
+        }
+        .showcase-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--white), rgba(255, 255, 255, 0));
+        }
+
+        .showcase-track {
+            display: flex;
+            gap: 2rem;
+            animation: scrollImages 25s linear infinite;
+            width: max-content;
+        }
+
+        .showcase-track:hover {
+            animation-play-state: paused;
+        }
+
+        .showcase-card {
+            width: 350px;
+            height: 240px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .showcase-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .showcase-card:hover img {
+            transform: scale(1.05);
+        }
+
+        @keyframes scrollImages {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 1rem)); }
+        }
+
+        /* Team Leaders Grid CSS */
+        .team-leaders-section {
+            padding: 6rem 2rem;
+            background: var(--white);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .team-leaders-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-leaders-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-leader-card {
+            background: var(--bg-light);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(2, 40, 89, 0.06);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .team-leader-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(2, 40, 89, 0.12);
+        }
+
+        .leader-img-wrapper {
+            position: relative;
+            height: 320px;
+            overflow: hidden;
+            background: #cbd5e1;
+        }
+
+        .leader-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .team-leader-card:hover .leader-img-wrapper img {
+            transform: scale(1.04);
+        }
+
+        .leader-social-overlay {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .team-leader-card:hover .leader-social-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .leader-social-overlay .social-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--primary);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .leader-social-overlay .social-icon:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .leader-content {
+            padding: 2.2rem;
+            text-align: center;
+        }
+
+        .leader-content h3 {
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .leader-role {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .leader-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Lightbox Modal for Showcase Images */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        .lightbox-modal.active {
+            display: flex;
+        }
+        .lightbox-content {
+            max-width: 900px;
+            max-height: 80vh;
+            border-radius: 8px;
+            object-fit: contain;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #FFFFFF;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .lightbox-close:hover {
+            color: var(--accent);
+        }
+
+        /* Interactive Toast Notification */
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: #FFFFFF;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-left: 4px solid var(--accent);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .toast-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast-notification i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            padding: 5rem 2rem 2rem;
+            border-top: 4px solid var(--secondary-accent);
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p {
+            color: #94A3B8;
+            margin-top: 1rem;
+            max-width: 340px;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        }
+
+        .social-icon:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            font-size: 1.15rem; margin-bottom: 1.4rem; font-weight: 700; letter-spacing: 0.5px; color: var(text-dark); position: relative;
+        }
+        .footer-col h4::after {
+            content: ''; position: absolute; left: 0; bottom: -6px; width: 30px; height: 2px; background: var(--accent-color);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col ul li a {
+            color: #E2E8F0;
+            text-decoration: none;
+            transition: color 0.2s ease, padding-left 0.2s ease;
+            font-size: 0.95rem;
+            display: inline-block;
+        }
+
+        .footer-col ul li a:hover {
+            color: #3967e6;
+            padding-left: 5px;
+        }
+
+        .footer-newsletter p {
+            color: #94A3B8;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .newsletter-input {
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            color: #FFFFFF;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .newsletter-input::placeholder {
+            color: #64748B;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--accent);
+            
+        }
+
+        .newsletter-btn {
+            background-color: var(--accent-color);
+            color: #FFFFFF;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .newsletter-btn:hover {
+            background-color: #02699f;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #64748B;
+            font-size: 0.85rem;
+        }
+
+        .footer-legal-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-legal-links a {
+            color: #64748B;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-legal-links a:hover {
+            color: #FFFFFF;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 950px) {
+            .principle-card { min-width: calc(50% - 1rem); }
+            .roulette-container { grid-template-columns: 1fr; gap: 2rem; }
+            .team-leaders-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 800px;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .overview-section {
+                grid-template-columns: 1fr;
+            }
+            .hero-section h1 {
+                font-size: 2.25rem;
+            }
+            .nav-controls {
+                display: flex;
+            }
+            .theme-toggle-mobile {
+                display: flex;
+            }
+            .nav-right-group .theme-toggle-btn {
+                display: none;
+            }
+            .burger-menu {
+                display: flex;
+            }
+            .nav-right-group {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--header-bg);
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                border-bottom: 1px solid var(--border-color);
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+            .nav-right-group.active {
+                display: flex;
+            }
+            #navLinks {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                width: 100%;
+            }
+            .btn-quote {
+                width: 100%;
+                text-align: center;
+            }
+            .dropdown-menu {
+                position: static !important;
+                box-shadow: none !important;
+                border: none !important;
+                background: transparent !important;
+                padding-left: 1rem !important;
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+            }
+            nav ul li.dropdown .dropdown-menu li a {
+                padding: 0.4rem 0;
+                font-size: 0.85rem;
+                color: var(--text-muted);
+            }
+            .principle-card { min-width: 100%; }
+        }
+
+        @media (max-width: 650px) {
+            .team-leaders-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            nav a.logo img {
+                height: 35px;
+            }
+
+            .overview-section,
+            .why-container,
+            .mid-contact-section {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="citykool logo.png" alt="City Kool Integrated Solutions Logo">
+            </a>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle-btn theme-toggle-mobile" id="themeToggleMobile" aria-label="Toggle Dark/Light Theme">
+                    <i class="fas fa-moon" id="themeIconMobile"></i>
+                </button>
+
+                <button class="burger-menu" id="burgerBtn" aria-label="Toggle Navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+            <div class="nav-right-group" id="navRightGroup">
+                <ul id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="regions.html" class="dropdown-toggle">Regional Branches <span class="dropdown-arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="regions.html">Nairobi (HQ)</a></li>
+                            <li><a href="upholstery.html">ELITE STITCH & SHINE</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Dark/Light Theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <a href="contact.html" class="btn-quote">Get A Quote</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <span class="hero-badge">Corporate Profile</span>
+            <h1>Engineering Excellence & Integrated Infrastructure Solutions</h1>
+            <p>Delivering dependable, safe, and sophisticated engineering services built on a foundation of professional mastery and long-term reliability.</p>
+        </section>
+
+        <section class="overview-section">
+            <div class="overview-content">
+                <h2>Committed to Technical Precision and Operational Integrity</h2>
+                <p>CityKool Integrated Solutions Ltd is a premier multi-disciplinary engineering firm offering specialized services spanning electrical engineering, mechanical systems, civil structural execution, telecom infrastructure, and industrial climate control.</p>
+                <p>Our organization is anchored by a cadre of certified professionals who manage complex commercial, institutional, and industrial mandates with strict adherence to international quality and safety benchmarks.</p>
+                
+                <div class="hq-highlight">
+                    <h4>Global Corporate Headquarters</h4>
+                    <p>Nairobi, Kenya — Directing centralized operations, strategic planning, and regional project deployment across East Africa.</p>
+                </div>
+            </div>
+            <div class="overview-visual">
+                <img src="crane.webp" alt="Corporate Engineering Execution">
+            </div>
+        </section>
+
+        <section class="roulette-section">
+            <div class="roulette-container">
+                <div class="roulette-item">
+                    <h3 class="roulette-number" data-target="20">0</h3>
+                    <p>Years of Cumulative Expertise</p>
+                </div>
+                <div class="roulette-item">
+                    <h3 class="roulette-number" data-target="150">0</h3>
+                    <p>Successful Projects Executed</p>
+                </div>
+                <div class="roulette-item">
+                    <h3 class="roulette-number" data-target="100">0</h3>
+                    <p>Commitment to Safety Standards</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-mv">
+            <div class="interactive-mv-container">
+                <div class="section-header" style="margin-bottom: 2rem;">
+                    <h2>Our Strategic Direction</h2>
+                    <p>Explore the core tenets shaping our professional roadmap and commitments.</p>
+                </div>
+                <div class="mv-tabs">
+                    <button class="mv-tab-btn active" onclick="switchTab('mission', event)">Our Mission</button>
+                    <button class="mv-tab-btn" onclick="switchTab('vision', event)">Our Vision</button>
+                </div>
+                <div id="mission" class="mv-content-box active">
+                    <h3>Our Mission</h3>
+                    <p>To provide high-quality, innovative, and sustainable engineering solutions that optimize institutional operations and elevate core infrastructure standards across the region, ensuring every project yields long-term operational performance.</p>
+                </div>
+                <div id="vision" class="mv-content-box">
+                    <h3>Our Vision</h3>
+                    <p>To be the trusted industry leader in integrated engineering and infrastructure solutions, renowned for flawless project execution, absolute safety compliance, and structural longevity across East Africa and beyond.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="principles-section">
+            <div class="section-header">
+                <h2>Our Core Operating Principles</h2>
+                <p>The ethical framework and professional tenets governing our institutional culture and engineering methodologies. (Click any principle to learn more)</p>
+            </div>
+            <div class="carousel-outer">
+                <div class="principles-track" id="principlesTrack">
+                    <div class="principle-card" onclick="showInteractiveToast('Integrity: We uphold absolute transparency, accountability, and ethical governance in every professional partnership.')">
+                        <h3>Integrity</h3>
+                        <p>We uphold absolute transparency, accountability, and ethical governance in every professional partnership and stakeholder interaction.</p>
+                    </div>
+                    <div class="principle-card" onclick="showInteractiveToast('Excellence: We enforce rigorous quality controls to consistently outperform expectations.')">
+                        <h3>Excellence</h3>
+                        <p>We enforce rigorous quality controls to consistently outperform expectations in design precision, safety compliance, and physical delivery.</p>
+                    </div>
+                    <div class="principle-card" onclick="showInteractiveToast('Innovation: We leverage contemporary engineering technology to resolve complex challenges.')">
+                        <h3>Innovation</h3>
+                        <p>We leverage contemporary engineering technology and forward-thinking techniques to resolve complex structural and mechanical hurdles.</p>
+                    </div>
+                    <div class="principle-card" onclick="showInteractiveToast('Sustainability: We design with environmental consciousness to maximize asset life.')">
+                        <h3>Sustainability</h3>
+                        <p>We design with environmental consciousness, building durable infrastructure engineered to minimize footprint and maximize asset life.</p>
+                    </div>
+                    <div class="principle-card" onclick="showInteractiveToast('Collaboration: We believe in strong cross-functional teamwork with clients and partners.')">
+                        <h3>Collaboration</h3>
+                        <p>We believe in strong cross-functional teamwork, working seamlessly alongside clients, contractors, and specialized engineering partners.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-btn" onclick="moveCarousel(-1)">❮</button>
+                <button class="carousel-btn" onclick="moveCarousel(1)">❯</button>
+            </div>
+        </section>
+
+        <section class="showcase-carousel-section">
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <h2>Engineering In Motion</h2>
+                <p>A visual glimpse into our field operations, technical installations, and execution standards. (Click any image to view fullscreen)</p>
+            </div>
+            <div class="showcase-wrapper" id="showcaseWrapper">
+                <div class="showcase-track">
+                    <div class="showcase-card" onclick="openLightbox('Electrical-Installation.jpg')">
+                        <img src="Electrical-Installation.jpg" alt="Engineering Operations 1">
+                    </div>
+                    <div class="showcase-card" onclick="openLightbox('Civil-Engineering-Road-Works.jpg')">
+                        <img src="Civil-Engineering-Road-Works.jpg" alt="Civil Works Execution">
+                    </div>
+                    <div class="showcase-card" onclick="openLightbox('Telecommunication-infrastructure.jpg')">
+                        <img src="Telecommunication-infrastructure.jpg" alt="Infrastructure Tech">
+                    </div>
+                    <div class="showcase-card" onclick="openLightbox('Telecommunication-Infrastructure-1.jpg')">
+                        <img src="Telecommunication-Infrastructure-1.jpg" alt="Site Implementation">
+                    </div>
+                    <div class="showcase-card" onclick="openLightbox('site tower.jpeg')">
+                        <img src="site tower.jpeg" alt="Engineering Operations 1">
+                    </div>
+                    <div class="showcase-card" onclick="openLightbox('site base.jpeg')">
+                        <img src="site base.jpeg" alt="Civil Works Execution">
+                    </div>
+                    <div class="showcase-card" onclick="openLightbox('site turbine.jpeg')">
+                        <img src="site turbine.jpeg" alt="Infrastructure Tech">
+                    </div>
+                    <div class="showcase-card" onclick="openLightbox('site circuit.jpeg')">
+                        <img src="site circuit.jpeg" alt="Site Implementation">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox Modal -->
+        <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-content" id="lightboxImg" alt="Enlarged Showcase Image">
+        </div>
+
+        <!-- Interactive Toast Notification Element -->
+        <div class="toast-notification" id="toastNotification">
+            <i class="fas fa-info-circle"></i>
+            <span id="toastMessage">Notification message goes here</span>
+        </div>
+
+        <section class="team-leaders-section">
+            <div class="team-leaders-container">
+                <div class="section-header">
+                    <span>Executive Leadership</span>
+                    <h2>Meet Our Team Leaders</h2>
+                    <p>Guiding our vision and driving operational excellence across every sector we serve.</p>
+                </div>
+
+                <div class="team-leaders-grid">
+                    <div class="team-leader-card" onclick="showInteractiveToast('Ernest Wekoto - CEO: Leading CityKool Integrated Solutions with 20+ years of engineering experience.')">
+                        <div class="leader-img-wrapper">
+                            <img src="Ernest(1).jpg" alt="Chief Executive Officer Ernest Wekoto">
+                            <div class="leader-social-overlay">
+                                <a href="#" class="social-icon" onclick="event.stopPropagation();"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-icon" onclick="event.stopPropagation();"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        <div class="leader-content">
+                            <h3>Ernest Wekoto</h3>
+                            <span class="leader-role">Chief Executive Officer (CEO)</span>
+                            <p>With over 20 years of industry leadership, Ernest steers the strategic direction, fostering innovation and long-term partnerships globally.</p>
+                        </div>
+                    </div>
+
+                    <div class="team-leader-card" onclick="showInteractiveToast('Roy Wekoto - Finance Manager: Managing financial strategy and fiscal planning.')">
+                        <div class="leader-img-wrapper">
+                            <img src="roy-wekoto-placeholder.jpg" alt="Finance Manager Roy Wekoto">
+                            <div class="leader-social-overlay">
+                                <a href="#" class="social-icon" onclick="event.stopPropagation();"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-icon" onclick="event.stopPropagation();"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        <div class="leader-content">
+                            <h3>Roy Wekoto</h3>
+                            <span class="leader-role">Finance Manager</span>
+                            <p>Roy directs our financial strategy and fiscal planning, ensuring robust resource allocation, compliance, and sustainable economic growth.</p>
+                        </div>
+                    </div>
+
+                    <div class="team-leader-card" onclick="showInteractiveToast('Norman Kajura - Operations Director: Overseeing day-to-day execution and workflow optimization.')">
+                        <div class="leader-img-wrapper">
+                            <img src="norman-kajura-placeholder.jpg" alt="Operations Director Norman Kajura">
+                            <div class="leader-social-overlay">
+                                <a href="#" class="social-icon" onclick="event.stopPropagation();"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-icon" onclick="event.stopPropagation();"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        <div class="leader-content">
+                            <h3>Norman Kajura</h3>
+                            <span class="leader-role">Operations Director</span>
+                            <p>Norman oversees day-to-day execution and workflow optimization, ensuring the highest standards of safety, quality, and project delivery.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo" style="margin-bottom: 0.5rem; display: inline-block;">
+                    <img src="citykool logo.png" alt="City Kool Integrated Solutions Logo" style="height: 45px;">
+                </a>
+                <p>Delivering premier engineering infrastructure, electrical grid setups, civil works, and climate control technology across East Africa.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
+                    <a href="#" class="social-icon" aria-label="X / Twitter">𝕏</a>
+                    <a href="#" class="social-icon" aria-label="YouTube">▶</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="projects.html">Project Portfolio</a></li>
+                    <li><a href="regions.html">Regional Branches</a></li>
+                    <li><a href="upholstery.html">Upholstery</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Core Divisions</h4>
+                <ul>
+                    <li><a href="services.html">Refrigeration & HVAC</a></li>
+                    <li><a href="services.html">Civil Engineering & Roads</a></li>
+                    <li><a href="services.html">Electrical Installations</a></li>
+                    <li><a href="services.html">Facility Maintenance</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to get technical insights, company updates, and project highlights.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); showInteractiveToast('Thank you for subscribing to CityKool updates!'); this.reset();">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe Now</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Copyright © 2026 Citykool Integrated Solutions Ltd. All Rights Reserved.</p>
+            <div class="footer-legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            
+        </div>
+    </footer>
+
+    <script>
+        // Dark Theme Implementation
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeToggleMobile = document.getElementById('themeToggleMobile');
+        const themeIconMobile = document.getElementById('themeIconMobile');
+        const htmlElement = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            htmlElement.setAttribute('data-theme', 'dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeIconMobile.classList.remove('fa-moon');
+            themeIconMobile.classList.add('fa-sun');
+        }
+
+        function toggleTheme() {
+            let theme = htmlElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeIconMobile.classList.remove('fa-sun');
+                themeIconMobile.classList.add('fa-moon');
+            } else {
+                htmlElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeIconMobile.classList.remove('fa-moon');
+                themeIconMobile.classList.add('fa-sun');
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        // Burger Menu Toggle Logic
+        const burgerBtn = document.getElementById('burgerBtn');
+        const navRightGroup = document.getElementById('navRightGroup');
+
+        burgerBtn.addEventListener('click', () => {
+            navRightGroup.classList.toggle('active');
+            burgerBtn.classList.toggle('active');
+        });
+
+        // Mission & Vision Tab Switcher
+        function switchTab(tabId, event) {
+            document.querySelectorAll('.mv-content-box').forEach(box => {
+                box.classList.remove('active');
+            });
+            document.querySelectorAll('.mv-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Principles Carousel Logic
+        let currentPosition = 0;
+        const track = document.getElementById('principlesTrack');
+        
+        function moveCarousel(direction) {
+            const cards = track.children;
+            const totalCards = cards.length;
+            const visibleCards = window.innerWidth > 950 ? 3 : (window.innerWidth > 850 ? 2 : 1);
+            const maxIndex = totalCards - visibleCards;
+
+            currentPosition += direction;
+            if (currentPosition < 0) currentPosition = 0;
+            if (currentPosition > maxIndex) currentPosition = maxIndex;
+
+            const cardWidth = cards[0].getBoundingClientRect().width;
+            const gap = 32; 
+            track.style.transform = `translateX(-${currentPosition * (cardWidth + gap)}px)`;
+        }
+
+        // Animated Number Counters (Roulette section interactivity)
+        function animateCounters() {
+            const counters = document.querySelectorAll('.roulette-number');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                const speed = target / 50;
+                const updateCount = () => {
+                    count += speed;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count) + (target === 100 ? '%' : '+');
+                        setTimeout(updateCount, 30);
+                    } else {
+                        counter.innerText = target + (target === 100 ? '%' : '+');
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        // Trigger counters when scrolled into view
+        let animated = false;
+        window.addEventListener('scroll', () => {
+            const section = document.querySelector('.roulette-section');
+            const pos = section.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            if(pos < screenPosition && !animated) {
+                animateCounters();
+                animated = true;
+            }
+        });
+
+        // Lightbox Modal Logic for Showcase Images
+        function openLightbox(imgSrc) {
+            const modal = document.getElementById('lightboxModal');
+            const modalImg = document.getElementById('lightboxImg');
+            modal.classList.add('active');
+            modalImg.src = imgSrc;
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.remove('active');
+        }
+
+        // Interactive Toast Notification System (Replacing intrusive alert popups)
+        let toastTimeout;
+        function showInteractiveToast(message) {
+            const toast = document.getElementById('toastNotification');
+            const toastMsg = document.getElementById('toastMessage');
+            
+            toastMsg.innerText = message;
+            toast.classList.add('show');
+            
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+        // Nav link interactivity
+        const navLinks = document.querySelectorAll('#navLinks li a');
+
+        // Close mobile menu when any nav link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 850) {
+                    navRightGroup.classList.remove('active');
+                    burgerBtn.classList.remove('active');
+                }
+            });
+
+            // Ripple effect on click
+            link.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.classList.add('nav-ripple');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Dropdown arrow rotation on hover
+        const dropdownItems = document.querySelectorAll('nav ul li.dropdown');
+        dropdownItems.forEach(item => {
+            const arrow = item.querySelector('.dropdown-arrow');
+            if (arrow) {
+                item.addEventListener('mouseenter', () => arrow.style.transform = 'rotate(180deg)');
+                item.addEventListener('mouseleave', () => arrow.style.transform = 'rotate(0deg)');
+            }
+        });
+
+        // Active link highlight based on current page
+        const currentPage = window.location.pathname.split('/').pop() || 'about.html';
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPage) {
+                link.classList.add('active');
+            } else if (!link.classList.contains('active')) {
+                link.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
